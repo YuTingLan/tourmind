@@ -2,12 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.btn-square{
+  @apply text-black text-center inline-block px-4 py-2 rounded-lg shadow-sm cursor-pointer w-full
 }
 
-*/
+.btn-round{
+  @apply text-black text-center inline-block px-4 py-2 rounded-full shadow-sm cursor-pointer
+}
+
+.btn-sm {
+  @apply px-3 py-1 text-sm;
+}
+
+.btn-xs {
+  @apply px-2 py-1 text-xs;
+}
+
+.btn-gray {
+  @apply  bg-gray-100 hover:bg-gray-300;
+}
+
+.btn-green {
+  @apply  bg-gray-100 hover:bg-green-500;
+}
+
+.btn-red {
+  @apply  bg-gray-100 hover:bg-red-500;
+}
+
+.btn-blue {
+  @apply  bg-gray-100 hover:bg-blue-300;
+}
+
+.btn-amber {
+  @apply  bg-amber-100 hover:bg-amber-300;
+}
+
+.btn-black {
+  @apply  text-white bg-black hover:bg-green-600;
+}
