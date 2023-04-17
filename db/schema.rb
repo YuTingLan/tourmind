@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2023_04_16_142249) do
     t.string "uid"
     t.string "name"
     t.string "tel"
-    t.string "country"
+    t.string "city"
     t.string "location"
     t.string "address"
     t.string "avatar_url"

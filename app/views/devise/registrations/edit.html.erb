@@ -1,43 +1,46 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="flex items-center justify-center w-full h-screen">
+  <div class="relative flex items-center justify-center bg-white rounded-lg shadow-lg form-box w-400 h-450 shadow-gary-500/50">
+    <%= link_to image_tag("close", class: "absolute right-0 top-0 m-2 h-5 w-5"), root_path %>
+    <div class="form-value">
+        <div class="m-8 field ">
+          <%= image_tag("logo", class: "w-10 h-10 mb-2") %>
+          <span class="my-8 text-xl font-bold text-center">
+            <span class="text-red-600 tracking-zero">修改</span>
+            您在
+            <span class=" text-amber-500 tracking-zero">Tour</span>
+            <span class=" text-sky-500 tracking-zero">Mind</span>
+            的會員資料
+          </span>
+        </div>
+        
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="field">
+            <%= f.hidden_field :avatar_url %>
+            <% if current_user.avatar_url == nil %>
+              <%=image_tag("user_default_avatar", class: "rounded-full w-20 h-20 m-auto")%>
+            <% else %>
+              <%=image_tag(current_user.avatar_url, class: "rounded-full w-20 h-20 m-auto")%>
+            <% end %>
+          </div>
+          <div class="relative m-2 field">
+            <%= f.select :city, User.city_list, {}, class: "w-full text-black bg-white rounded-lg" %>
+          </div>
+          <div class="relative m-2 field">
+            <%= f.text_field :name, autocomplete: true, autocomplete: "name", placeholder: "請輸入暱稱...", class: "rounded-lg text-black w-full" %>
+          </div>
+           <div class="relative m-2 field">
+            <%= f.telephone_field :tel, autocomplete: true, autocomplete: "tel", placeholder: "請輸入電話號碼...", class: "rounded-lg text-black w-full" %>
+          </div>
+          <div class="m-2 field">
+            <div class="w-full p-2 text-gray-400 bg-gray-200 border-2 rounded-lg border-bsolid border-block"><%= current_user.email %></div>
+          </div>
+          
+          <div class="m-2 actions field">
+            <%= f.submit "確定更新", class: "btn-square btn-green " %>
+          </div>
+        <% end %>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</section>

@@ -5,10 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.provider == 'google_oauth2'
       params.delete('current_password')
       resource.password = params['password']
-
-      resource.update_without_password(params)
+      resource.update(account_update_params)
     else
-      resource.update_with_password(params)
+      resource.update(account_update_params)
     end
+  end
+  def account_update_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :name, :city, :tel)
   end
 end

@@ -5,7 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string :name
       t.string :tel
-      t.string :country
+      t.string :city
       t.string :location
       t.string :address
       t.string :avatar_url

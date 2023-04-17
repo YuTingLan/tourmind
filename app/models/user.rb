@@ -36,4 +36,7 @@ class User < ApplicationRecord
     false
   end
 
+  def self.city_list
+    [['請選擇城市'], ['台北市'],['新北市'],['宜蘭'],['花蓮'],['高雄'],['台南'],['台東'],['新竹'],['彰化'],['嘉義'],['南投'],['屏東']]
+  end
 end

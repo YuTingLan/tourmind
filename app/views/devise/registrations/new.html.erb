@@ -14,10 +14,13 @@
         
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <div class="relative m-2 field">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "請輸入您的暱稱...", class: "rounded-lg w-full inline-block"%>
+          </div>
+          <hr>
+          <div class="relative m-2 field">
             <%= image_tag "email.png", class: "h-10 w-10 inline-block absolute right-0 z-2"%>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "請輸入信箱帳號...", class: "rounded-lg w-full inline-block"%>
           </div>
-
           <div class="relative m-2 field">
             <%= image_tag "password.png", class: "h-10 w-10 inline-block absolute right-0 z-2" %>
             <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入密碼...(最少6個字)", class: "rounded-lg text-black w-full" %>

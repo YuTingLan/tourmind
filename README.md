@@ -10,6 +10,7 @@ Things you may want to cover:
   - rails 6.1.7.3
   - ruby 3.2.0
   - node v16.19.0
+  - postgres (PostgreSQL) 14.7 (Homebrew)
 
 - master.key
   - 編輯 vim
