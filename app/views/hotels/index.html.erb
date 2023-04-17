@@ -1,0 +1,47 @@
+<h1 class="heading-1">飯店/民宿推薦</h1>
+
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+
+  <button class="btn-add "><%= link_to '新增好住處' , new_hotel_path %></button>
+
+
+<section class="container">
+    <aside class="basis-1/3"></aside>
+    <section class="basis-2/3">
+     <% @hotels.each do |hotel| %>
+    <section class="flex border-2 border-red-300">
+      <div>
+        <img src="https://fakeimg.pl/350x200/?text=Hello" class="h-full">
+      </div>
+      <div class="mx-3 h-90">
+        <h3>
+          名稱:<%= link_to hotel.name , hotel_path(hotel.id) %>
+        </h3>
+        <p>
+          飯店網站:<%= link_to hotel.name , hotel.website %>
+        </p>
+        <p>
+          地址:<%= hotel.address %>
+        </p>
+        <p>
+          緯度:<%= hotel.latitude %>
+        </p>
+        <p>
+          經度:<%= hotel.longitude %>
+        </p>
+        <p>
+          簡介:<%= hotel.intro&.truncate(30) %>
+        </p>
+        <button class="btn-form">
+          <%= link_to '編輯' , edit_hotel_path(hotel.id) %>
+        </button>
+        <button class="btn-form">
+          <%= link_to '刪除' , hotel_path(hotel.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
+        </button>
+      </div>
+    </section>
+    <% end %>
+    </section>
+</section>
