@@ -1,0 +1,49 @@
+<%if @hotel %>
+  <h1>
+    <%= @hotel.name %>
+  </h1>
+  <div>
+    <img src="https://fakeimg.pl/350x200/?text=Hello">
+  </div>
+  <div class='field'>
+    名稱:<%= @hotel.name %>
+  </div>
+
+  <div class='field'>
+    <%= link_to '飯店網址', @hotel.website %>
+  </div>
+
+  <div class='field'>
+    <%= @hotel.star_rating %>
+  </div>
+
+  <div class='field'>
+    地址:<%= @hotel.address %>
+  </div>
+
+  <div class='field'>
+    緯度:<%= @hotel.latitude %>
+  </div>
+
+  <div class='field'>
+    經度:<%= @hotel.longitude %>
+  </div>
+
+  <div class='field'>
+    Google評論星星:<%= @hotel.google_star_rating %>
+  </div>
+
+  <div class='field'>
+    簡介:<%= @hotel.intro %>
+  </div>
+
+  <button class="px-3 bg-blue-300 rounded-full">
+    <%= link_to '回到上頁' , :back %>
+  </button>
+  <% else %>
+    <h2>404 X_X</h2>
+    <% end %>
+
+
+
+      

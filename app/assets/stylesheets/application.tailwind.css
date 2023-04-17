@@ -2,11 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+.navbar-li {
+ @apply px-4 py-2 text-center border-2 border-black rounded-full;
+ width: 100px; 
+}
+
+.flash{
+  @apply bg-red-400
+}
+
+.btn-form{
+  @apply px-3 bg-green-600 rounded-full;
+}
+
+.btn-add{
+  @apply flex px-3 py-2 text-justify bg-pink-300 rounded-full shadow-md;
+}
+
+.container{
+  @apply flex flex-wrap m-auto; 
+}
+
+
+
+
+
 /*
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply px-4 py-2 bg-blue-200;
   }
 }
 

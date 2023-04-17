@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  budget: 1
+  attraction_fee: 1.5
+  addresslatitude: MyString
+  longitude: MyString
+  google_star_rating: 1.5
+  stay_duration: 1.5
+  intro: MyText
+  pet_freindlypicture: MyString
+
+two:
+  name: MyString
+  budget: 1
+  attraction_fee: 1.5
+  addresslatitude: MyString
+  longitude: MyString
+  google_star_rating: 1.5
+  stay_duration: 1.5
+  intro: MyText
+  pet_freindlypicture: MyString

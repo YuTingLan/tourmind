@@ -1,0 +1,71 @@
+<h1>景點推薦</h1>
+
+ <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+
+  <button class="btn-add">
+    <%= link_to '新增好地方' , new_site_path %>
+  </button>
+
+  <form>
+    <input type="text" name="keyword" placeholder="請輸入關鍵字....">
+    <input type="submit" class="btn-xs" value="查詢">
+  </form>
+
+  <% @sites.each do |site| %>
+
+    <div>
+      <img src="https://fakeimg.pl/350x200/?text=Hello">
+    </div>
+    <div class='field'>
+      名稱:<%= link_to site.name , site_path(site.id) %>
+    </div>
+
+    <div class='field'>
+      預算: <%= site.budget %>
+    </div>
+
+      <div class='field'>
+      門票: <%= site.attraction_fee %>
+    </div>
+    
+    <div class='field'>
+      地址:<%= site.address %>
+    </div>
+
+    <div class='field'>
+      緯度:<%= site.latitude %>
+    </div>
+
+    <div class='field'>
+      經度:<%= site.longitude %>
+    </div>
+
+    <div class='field'>
+      Google評論星星:<%= site.google_star_rating %>
+    </div>
+    
+    <div class='field'>
+      停留時間:<%= site.stay_duration %>
+    </div>
+
+    <div class='field'>
+      簡介:<%= site.intro %>
+    </div>
+
+    <div class='field'>
+      攜帶寵物:<%= site.pet_freindly %>
+    </div>
+
+    <button class="btn-form">
+      <%= link_to '編輯' , edit_site_path(site.id) %>
+    </button>
+    <button class="btn-form">
+      <%= link_to '刪除' , site_path(site.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
+    </button>
+
+    <% end %>
+
+
+
