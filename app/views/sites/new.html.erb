@@ -1,0 +1,60 @@
+<h1>Sites</h1>
+
+<%= form_for(@site) do |f| %>
+ 
+        <div class='field'>
+            <%= f.label :name,'景點名稱:' %>
+                <%= f.text_field :name %>
+        </div>
+
+        <div class='field'>
+            <%= f.label :budget,'預算:'%>
+                <%= f.text_field :budget %>
+        </div>
+
+         <div class='field'>
+            <%= f.label :attraction_fee ,'門票:'%>
+                <%= f.text_field :attraction_fee %>
+        </div>
+
+         <div class='field'>
+            <%= f.label :address, '地址:' %>
+                <%= f.text_field :address %>
+        </div>
+
+        <div class='field'>
+            <%= f.label :latitude, '緯度:' %>
+                <%= f.text_field :latitude %>
+        </div>
+
+        <div class='field'>
+            <%= f.label :longitude, '經度:' %>
+                <%= f.text_field :longitude %>
+        </div>
+
+        <div class='field'>
+            <%= f.label :google_star_rating, 'Google評論星星:' %>
+                <%= f.text_field :google_star_rating %>
+        </div>
+
+           <div class='field'>
+            <%= f.label :stay_duration, '停留時間:' %>
+                <%= f.text_field :stay_duration %>
+        </div>
+
+        <div class='field'>
+            <%= f.label :intro, '簡介:' %>
+                <%= f.text_area :intro %>
+        </div>
+
+
+        <div class='field'>
+            <%= f.label :pet_freindly, '攜帶寵物:' %>
+                <%= f.text_field :pet_freindly %>
+        </div>
+
+        <%= f.submit class:"px-3 bg-blue-300 rounded-full" %>
+  <% end %>
+
+
+  
