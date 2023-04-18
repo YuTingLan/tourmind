@@ -1,0 +1,35 @@
+ <% if @hotel %>
+ <section class="border-2 border-red-300">
+       <h1 class="heading-1">
+        <%= @hotel.name %>
+      </h1>
+      <div>
+        <img src="https://fakeimg.pl/350x200/?text=Hello" class="h-full">
+      </div>
+      <div class="mx-3 h-90">
+        <h2>
+           名稱:<%= @hotel.name %>
+        </h2>
+        <p>
+         <%= link_to @hotel.name, @hotel.website %>
+        </p>
+        <p>
+          地址:<%= @hotel.address %>
+        </p>
+        <p>
+          緯度:<%= @hotel.latitude %>
+        </p>
+        <p>
+          經度:<%= @hotel.longitude %>
+        </p>
+        <p>
+          簡介:<%= @hotel.intro %>
+        </p>
+    </section>
+  <button class="px-3 bg-blue-300 rounded-full">
+    <%= link_to '回到上頁' , :back %>
+  </button>
+
+  <% else %>
+    <h2>查無此筆資料</h2>
+    <% end %>
