@@ -2,30 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .navbar-li {
  @apply px-4 py-2 text-center border-2 border-black rounded-full;
- width: 100px; 
+ width: 100px;
 }
 
-.flash{
-  @apply bg-red-400
+.flash {
+ @apply bg-red-400;
 }
 
-.btn-form{
-  @apply px-3 bg-green-600 rounded-full;
+.btn-form {
+ @apply px-3 bg-green-600 rounded-full;
 }
 
-.btn-add{
-  @apply flex px-3 py-2 text-justify bg-pink-300 rounded-full shadow-md;
+.btn-add {
+ @apply flex px-3 py-2 text-justify bg-pink-300 rounded-full shadow-md;
 }
 
-.container{
-  @apply flex flex-wrap m-auto; 
+.container {
+ @apply flex flex-wrap m-auto;
 }
 
 .heading-1 {
-  @apply text-black text-xl ml-2
+ @apply m-auto ml-2 text-xl text-black;
 }
 
 /*
