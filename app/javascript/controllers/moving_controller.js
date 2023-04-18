@@ -8,6 +8,7 @@ export default class extends Controller {
 
     this.currentIndex = 0; // 初始化當前索引為 0
     this.updateSlides(); // 更新輪播效果
+    console.log("hello");
   }
 
   nextSlide() {
