@@ -1,0 +1,24 @@
+<div id="<%= dom_id restaurant %>">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div>
+      <%= link_to restaurant do %>
+        <img class="w-full" src=<%=restaurant.image%> alt="restaurant iamge">
+      <% end %>
+    </div>
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2"><%=restaurant.name%></div>
+      <span>OOOOO(評分)</span>
+      <span>評價數量(都從Comment拿)</span>
+    </div>
+    <div class="px-6 pt-4 pb-2 flex justify-between">
+      <div>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=restaurant.cuisine_types%></span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">平均價位: <%=restaurant.price.to_i%></span>
+      </div>
+      <div>
+        <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-2 px-5 bg-gray-200 inline-block font-medium ms-auto", data: {confirm: "Are you sure?"}%>
+      </div>
+    </div>
+  </div>
+
+</div>
