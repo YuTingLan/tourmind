@@ -1,5 +1,5 @@
-<div id="<%= dom_id restaurant %>">
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+  <div class=" rounded overflow-hidden shadow-lg">
     <div>
       <%= link_to restaurant do %>
         <img class="w-full" src=<%=restaurant.image%> alt="restaurant iamge">
@@ -12,7 +12,9 @@
     </div>
     <div class="px-6 pt-4 pb-2 flex justify-between">
       <div>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=restaurant.cuisine_types%></span>
+        <% restaurant.cuisine_types.each do |cuisine_type| %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=cuisine_type%></span>
+        <% end %>
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">平均價位: <%=restaurant.price.to_i%></span>
       </div>
       <div>
@@ -21,4 +23,3 @@
     </div>
   </div>
 
-</div>

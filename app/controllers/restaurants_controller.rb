@@ -22,39 +22,28 @@ class RestaurantsController < ApplicationController
   # POST /restaurants or /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    @restaurant.image = "https://fakeimg.pl/300x200" if @restaurant.image.empty?
+    if @restaurant.save
+      redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." 
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
   def update
-    respond_to do |format|
-      if @restaurant.update(restaurant_params)
-        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated." }
-        format.json { render :show, status: :ok, location: @restaurant }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    p params
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /restaurants/1 or /restaurants/1.json
   def destroy
     @restaurant.destroy
-
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to restaurants_url, notice: "Restaurant was successfully destroyed."
   end
 
   private
@@ -65,6 +54,11 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :intro, :address, :lat, :long, :image, :section, :email, :tel, :website, :types, :cuisine_types, :price, :atmostphere, :michelin_star)
+      params.require(:restaurant).permit(:name, :intro, :address, :lat, :long, :image, :section, :email, :tel, :website, :restaurant_type, {:cuisine_types => []}, :price,{:atmostphere => []}, :michelin_star).tap do |whitelisted|
+        whitelisted[:cuisine_types].reject!(&:empty?)
+        whitelisted[:atmostphere].reject!(&:empty?)
+      end
     end
+
+    
 end
