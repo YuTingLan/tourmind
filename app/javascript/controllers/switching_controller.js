@@ -6,7 +6,6 @@ export default class extends Controller {
   connect() {
     this.ratTarget.hidden = true
     this.closeButtonTarget.hidden = true 
-    console.log("ss");
   }
 
   toggleDown(){

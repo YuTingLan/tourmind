@@ -5,10 +5,8 @@ export default class extends Controller {
   static values = { currentIndex: Number }; // 定義一個值來保存當前索引
 
   connect() {
-
     this.currentIndex = 0; // 初始化當前索引為 0
     this.updateSlides(); // 更新輪播效果
-    console.log("hello");
   }
 
   nextSlide() {
