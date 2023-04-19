@@ -179,8 +179,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
-    rack-mini-profiler (2.3.4)
-      rack (>= 1.2.0)
     rack-protection (3.0.6)
       rack
     rack-proxy (0.7.6)
@@ -318,7 +316,6 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   pg (~> 1.1)
   puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.3)
   rubocop
   sass-rails (>= 6)
