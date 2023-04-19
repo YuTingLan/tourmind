@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_17_160041) do
+ActiveRecord::Schema.define(version: 2023_04_17_200600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hotels", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "star_rating"
+    t.string "address"
+    t.string "latitude"
+    t.string "longitude"
+    t.text "intro"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -35,11 +47,24 @@ ActiveRecord::Schema.define(version: 2023_04_17_160041) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sites", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "address"
+    t.string "latitude"
+    t.string "longitude"
+    t.float "stay_duration"
+    t.text "intro"
+    t.string "pet_freindly"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "uid"
     t.string "name"
     t.string "tel"
-    t.string "country"
+    t.string "city"
     t.string "location"
     t.string "address"
     t.string "avatar_url"
