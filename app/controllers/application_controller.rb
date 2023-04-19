@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-     #404:沒有找到紀錄
-     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    #404:沒有找到紀錄
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
    
 
     private
