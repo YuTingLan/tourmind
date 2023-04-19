@@ -34,7 +34,14 @@
             <%= f.telephone_field :tel, autocomplete: true, autocomplete: "tel", placeholder: "請輸入電話號碼...", class: "rounded-lg text-black w-full" %>
           </div>
           <div class="m-2 field">
-            <div class="w-full p-2 text-gray-400 bg-gray-200 border-2 rounded-lg border-bsolid border-block"><%= current_user.email %></div>
+            <% if current_user.email == nil %>
+              <div class="relative field">
+                <%= image_tag "email.png", class: "h-10 w-10 inline-block absolute right-0 z-2"%>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "請輸入Line信箱帳號...", class: "rounded-lg w-full inline-block"%>
+              </div>
+            <% else %>
+              <div class="w-full p-2 text-gray-400 bg-gray-200 border-2 rounded-lg border-bsolid border-block"><%= current_user.email %></div>
+            <% end %>
           </div>
           
           <div class="m-2 actions field">
