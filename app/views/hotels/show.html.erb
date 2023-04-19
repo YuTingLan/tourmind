@@ -1,5 +1,4 @@
- <% if @hotel %>
- <section class="border-2 border-red-300">
+<section class="border-2 border-red-300">
        <h1 class="heading-1">
         <%= @hotel.name %>
       </h1>
@@ -25,11 +24,7 @@
         <p>
           簡介:<%= @hotel.intro %>
         </p>
-    </section>
   <button class="px-3 bg-blue-300 rounded-full">
     <%= link_to '回到上頁' , :back %>
   </button>
-
-  <% else %>
-    <h2>查無此筆資料</h2>
-    <% end %>
+      </section>

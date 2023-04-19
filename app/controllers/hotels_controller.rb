@@ -14,13 +14,13 @@ class HotelsController < ApplicationController
        end
     end
     def show
-        @hotel = Hotel.find_by(id: params[:id])
+        @hotel = Hotel.find(params[:id])
     end
     def edit
-        @hotel = Hotel.find_by(id: params[:id])
+        @hotel = Hotel.find(params[:id])
     end
     def update
-        @hotel = Hotel.find_by(id: params[:id])
+        @hotel = Hotel.find(params[:id])
         if  @hotel.update (hotel_parames )
              redirect_to hotels_path, notice:'更新成功'
        else
@@ -28,7 +28,7 @@ class HotelsController < ApplicationController
        end
     end
     def destroy
-        @hotel = Hotel.find_by(id: params[:id])
+       @hotel = Hotel.find(params[:id])
         @hotel.destroy
         redirect_to hotels_path, notice:'已刪除!'
     end
