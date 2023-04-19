@@ -14,13 +14,13 @@ class SitesController < ApplicationController
        end
     end
     def show
-        @site = Site.find_by(id: params[:id])
+        @site = Site.find(params[:id])
     end
     def edit
-        @site = Site.find_by(id: params[:id])
+        @site = Site.find(params[:id])
     end
     def update
-        @site = Site.find_by(id: params[:id])
+        @site = Site.find(params[:id])
         if  @site.update (site_parames )
              redirect_to sites_path, notice:'更新成功'
        else
@@ -28,7 +28,7 @@ class SitesController < ApplicationController
        end
     end
     def destroy
-        @site = Site.find_by(id: params[:id])
+        @site = Site.find(params[:id])
         @site.destroy
         redirect_to sites_path, notice:'已刪除!'
     end
