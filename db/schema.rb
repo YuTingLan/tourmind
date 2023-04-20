@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2023_04_19_053316) do
+
+ActiveRecord::Schema.define(version: 2023_04_17_160041) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -25,13 +30,37 @@ ActiveRecord::Schema.define(version: 2023_04_19_053316) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.json "images"
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "intro"
+    t.string "address"
+    t.string "lat"
+    t.string "long"
+    t.string "image"
+    t.string "section"
+    t.string "email"
+    t.string "tel"
+    t.string "website"
+    t.integer "types"
+    t.text "cuisine_types"
+    t.float "price"
+    t.text "atmostphere"
+    t.string "michelin_star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+
   end
 
   create_table "users", force: :cascade do |t|
     t.string "uid"
     t.string "name"
     t.string "tel"
+
     t.string "city"
+
+    t.string "country"
+
     t.string "location"
     t.string "address"
     t.string "avatar_url"
