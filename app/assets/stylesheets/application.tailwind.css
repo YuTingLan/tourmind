@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.field_with_errors input{
+  @apply rounded-lg w-full border-4 border-red-600
+}
+
 .btn-square{
   @apply text-black text-center inline-block px-4 py-2 rounded-lg shadow-sm cursor-pointer w-full
 }

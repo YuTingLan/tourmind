@@ -108,6 +108,10 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
+    hotwire-rails (0.1.3)
+      rails (>= 6.0.0)
+      stimulus-rails
+      turbo-rails
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -115,6 +119,10 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.3)
     jwt (2.7.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -233,6 +241,10 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
+    rubocop-rails (2.19.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -262,11 +274,17 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stimulus-rails (1.2.1)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.27-arm64-darwin)
       railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -307,7 +325,9 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails (~> 2.7)
+  hotwire-rails (~> 0.1.3)
   jbuilder (~> 2.7)
+  letter_opener
   listen (~> 3.3)
   omniauth
   omniauth-facebook
@@ -318,6 +338,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 6.1.7, >= 6.1.7.3)
   rubocop
+  rubocop-rails (~> 2.19)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring

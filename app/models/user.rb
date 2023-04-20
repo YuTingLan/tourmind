@@ -1,6 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  #驗證必填欄位
+  validates :tel, presence: true
+  validates :email,
+            presence: true,
+            format: {
+              with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/,
+            }
   
    #confirmable -> 確認mail認證
    devise :database_authenticatable, :registerable,

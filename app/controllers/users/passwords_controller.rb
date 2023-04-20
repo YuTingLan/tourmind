@@ -9,10 +9,10 @@ class Users::PasswordsController < Devise::PasswordsController
     if user
       user.create_reset_digest
       user.send_password_reset_email
-      flash[:info] = "重置密碼郵件已發送到您的郵箱，請查收。"
+      flash[:notice] = "重置密碼郵件已發送到您的郵箱，請查收。"
       redirect_to root_path
     else
-      flash.now[:danger] = "該電子郵件地址未註冊。"
+      flash.now[:alert] = "該電子郵件地址未註冊。"
       render 'new'
     end
   end

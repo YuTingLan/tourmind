@@ -11,8 +11,7 @@
              的最好服務
           </span>
         </div>
-        
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), date:{ turbo:false }) do |f| %>
           <div class="relative m-2 field">
             <%= image_tag "email.png", class: "h-10 w-10 inline-block absolute right-0 z-2"%>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "請輸入信箱帳號...", class: "rounded-lg w-full inline-block"%>

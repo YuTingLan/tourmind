@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if user.present?
       sign_out_all_scopes
-      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
+      flash[:notice] = t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in_and_redirect user, event: :authentication
     else
       flash[:alert] =
@@ -14,27 +14,37 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def line
-    user = User.from_omniauth(request.env["omniauth.auth"] )
-    sign_in user
-    redirect_to root_path
+    user = User.from_omniauth(auth)
+    if user.present?
+      sign_out_all_scopes
+      flash[:notice] = t 'devise.omniauth_callbacks.success', kind: 'line'
+      sign_in_and_redirect user, event: :authentication
+    else
+      flash[:alert] =
+        t 'devise.omniauth_callbacks.failure', kind: 'line', reason: "#{auth.info.email} is not authorized."
+      redirect_to new_user_session_path
+    end
   end
 
   def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+    user = User.from_omniauth(auth)
+    if user.present?
+      sign_out_all_scopes
+      flash[:notice] = t 'devise.omniauth_callbacks.success', kind: 'facebook'
+      sign_in_and_redirect user, event: :authentication
     else
-      session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      flash[:alert] =
+        t 'devise.omniauth_callbacks.failure', kind: 'facebook', reason: "#{auth.info.email} is not authorized."
+      redirect_to new_user_session_path
     end
   end
 
   protected
+  #使用 OmniAuth 登入失敗時，重新導向至登入頁面
   def after_omniauth_failure_path_for(_scope)
     new_user_session_path
   end
-
+  #使用者登入後重新導向的路徑
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || root_path
   end
