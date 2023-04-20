@@ -22,7 +22,6 @@ sites = {
 sites2 = {
   day1: [
     { name: "國立故宮博物院", stay_time: 20, type: "景點" },
-    { name: "士林夜市", stay_time: 60, type: "餐廳" },
     { name: "臺北101", stay_time: 30, type: "夜景" },
   ],
   day2: [

@@ -1,7 +1,7 @@
 <div class="w-full">
   <%= link_to "新增行程", new_plan_path, class: "text-blue-600"%>
   <h1 class="mx-auto text-center mb-8 text-lg">行程總覽</h1>
-  <div class="flex gap-5 flex-wrap">
+  <div class="flex gap-3 flex-wrap">
     <% @plans.each do |plan| %>
       <div class="max-w-xs overflow-hidden rounded-xl bg-white shadow-md duration-200 hover:scale-105 hover:shadow-xl">
         <img src="https://i.imgur.com/5dmBrx6.jpg" alt="plant" class="h-auto w-full" />

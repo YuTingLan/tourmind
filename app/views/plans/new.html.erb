@@ -1,15 +1,27 @@
-<!-- component -->
-<div class="flex items-center justify-center p-12 mx-auto">
-  <div class="mx-auto w-full max-w-[550px]">
-    <%= form_with model: @plan do |form| %>
-      <div class="mb-5">
-        <%= form.label :name, "行程名稱", class: "mb-3 block text-base font-medium text-blue-600" %>
-        <%= form.text_field :name, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-      </div>
-      <div class="mb-5">
-        <%= form.label :description, "行程簡介", class: "mb-3 block text-base font-medium text-blue-600" %>
-        <%= form.text_area :description, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50%>
-      </div>
-    <% end %>
+<div class="w-full">
+  <%= link_to "所有行程", plans_path, class: "text-blue-600"%>
+  <!-- component -->
+  <div class="flex items-center justify-center p-12 mx-auto">
+    <div class="mx-auto w-full max-w-[550px]">
+      <%= form_with model: @plan do |form| %>
+        <div class="mb-5">
+          <%= form.label :name, "行程名稱", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.text_field :name, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+        </div>
+        <div class="mb-5">
+          <%= form.label :description, "行程簡介", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.text_area :description, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50%>
+        </div>
+        <div class="mb-5">
+          <%= form.label :days, "行程天數", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.number_field :days, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50, min: 1, placeholder: 1%>
+        </div>
+        <div class="mb-5">
+          <%= form.label :category, "分類選擇", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.select :category, options_for_select(["自然", "文化", "美食", "藝術","家庭"]), class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50, min: 1, placeholder: 1%>
+        </div>
+        <%= form.submit class: "my-10 block uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" %>
+      <% end %>
+    </div>
   </div>
 </div>

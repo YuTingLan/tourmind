@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   before_action :find_plan, only: %i[show edit update destroy]
 
   def index
-    @plans = Plan.all
+    @plans = Plan.order(id: :desc)
   end
 
   def show
@@ -13,6 +13,8 @@ class PlansController < ApplicationController
   end
 
   def create
+    plan = Plan.new(plan_params)
+    return redirect_to plan_path(plan.id) if plan.save
   end
 
   def edit
@@ -20,6 +22,8 @@ class PlansController < ApplicationController
   end
 
   def update
+    return redirect_to plan_path(@plan.id) if @plan.update(plan_params)
+    render :new
   end
 
   def destroy
@@ -33,6 +37,6 @@ class PlansController < ApplicationController
   end
 
   def plan_params
-    params.require(:plan).permit(:name, :description, :days, :caegory)
+    params.require(:plan).permit(:name, :description, :days, :category)
   end
 end
