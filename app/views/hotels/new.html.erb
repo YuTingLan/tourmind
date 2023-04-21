@@ -1,49 +1,9 @@
-<h1 class="heading-1">hotel</h1>
+<div class="w-full mx-auto md:w-2/3">
+  <h1 class="text-4xl font-bold">新增飯店</h1>
 
-<%= form_for(@hotel) do |f| %>
- 
-        <div class='field'>
-            <%= f.label :name,'名稱:' %>
-                <%= f.text_field :name %>
-        </div>
-
-        <div class='field'>
-            <%= f.label :website ,'飯店網址:'%>
-                <%= f.text_field :website %>
-        </div>
-
-         <div class='field'>
-            <%= f.label :tar_rating ,'星級數:'%>
-                <%= f.text_field :star_rating %>
-        </div>
-
-         <div class='field'>
-            <%= f.label :address, '地址:' %>
-                <%= f.text_field :address %>
-        </div>
-
-        <div class='field'>
-            <%= f.label :latitude, '緯度:' %>
-                <%= f.text_field :latitude %>
-        </div>
-
-        <div class='field'>
-            <%= f.label :longitude, '經度:' %>
-                <%= f.text_field :longitude %>
-        </div>
-        
-        <div class='field'>
-            <%= f.label :intro, '簡介:' %>
-                <%= f.text_area :intro %>
-        </div>
-
-        <%= f.submit class:"px-3 bg-blue-300 rounded-full" %>
-  <% end %>
-
-
-    <button class="btn-add">
-      <%= link_to '回到飯店列表' , hotels_path %>
-    </button>
+  <%= render "form", hotel: @hotel %>
+  <%= link_to '返回飯店列表', hotels_path, class:"ml-2 rounded-lg py-3 px-5 inline-block font-medium bg-red-300" %>
+</div>
 
   
   

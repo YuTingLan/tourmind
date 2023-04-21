@@ -1,0 +1,17 @@
+#  .rubocop.yml
+
+AllCops:
+ Exclude:
+  - "bin/*"
+  - "config/**/*"
+  - "node_modules/**/*"
+  - "spec/**/*"
+  - "test/**/*"
+ TargetRubyVersion: 3.2
+
+Style/Documentation:
+ Enabled: false
+
+Style/SymbolArray:
+ Exclude:
+  - "Gemfile"

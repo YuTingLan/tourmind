@@ -12,28 +12,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_230_416_142_249) do
+ActiveRecord::Schema.define(version: 2023_04_19_092339) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
-  create_table 'restaurants', force: :cascade do |t|
-    t.string 'name'
-    t.text 'intro'
-    t.string 'address'
-    t.string 'lat'
-    t.string 'long'
-    t.string 'image'
-    t.string 'section'
-    t.string 'email'
-    t.string 'tel'
-    t.string 'website'
-    t.integer 'types'
-    t.text 'cuisine_types'
-    t.float 'price'
-    t.text 'atmostphere'
-    t.string 'michelin_star'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "hotels", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "star_rating"
+    t.string "address"
+    t.string "latitude"
+    t.string "longitude"
+    t.text "intro"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.string "hotel_type"
+    t.string "tel"
+    t.string "equipment_types", default: [], array: true
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "intro"
+    t.string "address"
+    t.string "lat"
+    t.string "long"
+    t.string "image"
+    t.string "section"
+    t.string "email"
+    t.string "tel"
+    t.string "website"
+    t.integer "types"
+    t.text "cuisine_types"
+    t.float "price"
+    t.text "atmostphere"
+    t.string "michelin_star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table 'users', force: :cascade do |t|

@@ -32,7 +32,7 @@
 }
 
 .flash {
- @apply bg-red-400;
+ @apply bg-blue-400;
 }
 
 .btn-form {
@@ -48,7 +48,7 @@
 }
 
 .heading-1 {
- @apply m-auto ml-2 text-xl text-black;
+ @apply m-auto text-xl text-black;
 }
 
 .btn-green {
