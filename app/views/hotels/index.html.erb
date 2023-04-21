@@ -1,56 +1,59 @@
-<h1 class="heading-1">飯店/民宿推薦</h1>
+<div class="flex items-center justify-between">
+  <h1 class="text-4xl font-bold">飯店</h1>
+  <%= link_to '新增飯店' , new_hotel_path, class:"rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+</div>
 
 <div class="flash">
   <%= flash[:notice] %>
 </div>
 
-  <button class="btn-add "><%= link_to '新增好住處' , new_hotel_path %></button>
+<form class="flex justify-center">
+  <input type="text" name="keyword" value="<%= params[:keyword]%>" placeholder="請輸入關鍵字...."
+    class="w-full max-w-xl input input-bordered input-primary">
+  <input type="submit" class="btn-add" value="查詢">
+</form>
+
 <section class="container px-2 py-2">
-  <aside class="border-2 border-black basis-1/4">
-      <ul class="w-56 p-2 menu bg-base-100 rounded-box">
-        <li class="menu-title"><span>Category</span></li>
-      <li><a>Item 1</a></li>
-      <li><a>Item 2</a></li>
-      <li class="menu-title">
-        <span>Category</span>
-      </li>
-      <li><a>Item 1</a></li>
-      <li><a>Item 2</a></li>
-    </ul>
-  </aside>
-    <section class="basis-3/4">
-     <% @hotels.each do |hotel| %>
-    <section class="flex border-2 border-black rounded-full">
-      <div dir="ltr">
-        <img src="https://fakeimg.pl/350x200/?text=Hello" class="h-full rounded-s-full">
-      </div>
-      <div class="mx-10 h-90">
-        <h3>
-          名稱:<%= link_to hotel.name , hotel_path(hotel.id) %>
-        </h3>
-        <p>
-          飯店網站:<%= link_to hotel.name , hotel.website %>
-        </p>
-        <p>
-          地址:<%= hotel.address %>
-        </p>
-        <p>
-          緯度:<%= hotel.latitude %>
-        </p>
-        <p>
-          經度:<%= hotel.longitude %>
-        </p>
-        <p>
-          簡介:<%= hotel.intro&.truncate(30) %>
-        </p>
-        <button class="btn-form">
-          <%= link_to '編輯' , edit_hotel_path(hotel.id) %>
-        </button>
-        <button class="btn-form">
-          <%= link_to '刪除' , hotel_path(hotel.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
-        </button>
-      </div>
-    </section>
-    <% end %>
-    </section>
+  <section class="w-1/4"></section>
+
+  <section class="w-3/4">
+    <% @hotels.each do |hotel| %>
+      <section class="flex grid-cols-3 border-2 border-black">
+        <div class="w-1/3">
+          <img src="https://fakeimg.pl/350x200/?text=Hello" class="h-full">
+        </div>
+        <div class="w-1/3 mx-10 h-90">
+          <h2>名稱:<%= link_to hotel.name , hotel_path(hotel.id) %>
+          </h2>
+          <p>飯店網站:<%= link_to hotel.name , hotel.website %>
+          </p>
+          <p>地址:<%= hotel.address %>
+          </p>
+          <p>電話:<%= hotel.tel %>
+          </p>
+          <p>緯度:<%= hotel.latitude %>
+          </p>
+          <p>經度:<%= hotel.longitude %>
+          </p>
+          <p>簡介:<%= hotel.intro&.truncate(30)%>
+          </p>
+          <button class="btn-form">
+            <%= link_to '編輯' , edit_hotel_path(hotel.id) %>
+          </button>
+          <button class="btn-form">
+            <%= link_to '刪除' , hotel_path(hotel.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
+          </button>
+        </div>
+        <div class="w-1/3 mx-10 h-90">
+          <h2>飯店設備</h2>
+          <% hotel.equipment_types.each do |equipment| %>
+            <span
+              class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full ">
+              <%=equipment%>
+            </span>
+            <% end %>
+        </div>
+      </section>
+      <% end %>
+  </section>
 </section>
