@@ -1,0 +1,9 @@
+<h1 class="font-bold text-4xl"><%=restaurant.name%></h1>
+  <div class="flex">
+    <span class="mr-2">OOOOO(評分)</span>
+    <span class="mr-2">XX則評論(comment)</span>
+    <span class="mr-2">$<%=restaurant.price.to_i%></span>
+    <% restaurant.atmostphere.each do |atmostphere| %>
+      <span class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=atmostphere%></span>
+    <% end %>
+  </div>
