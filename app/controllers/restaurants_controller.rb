@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order(updated_at: :desc)
   end
 
   # GET /restaurants/1 or /restaurants/1.json
@@ -32,7 +32,6 @@ class RestaurantsController < ApplicationController
 
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
   def update
-    p params
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated."
     else

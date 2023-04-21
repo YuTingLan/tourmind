@@ -1,5 +1,8 @@
 
-  <div class=" rounded overflow-hidden shadow-lg">
+  <div class=" rounded overflow-hidden shadow-lg relative">
+    <div>
+      <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-1 px-3 bg-gray-200 inline-block font-medium ms-auto absolute top-1 start-1", data: {confirm: "Are you sure?"}%>
+    </div>
     <div>
       <%= link_to restaurant do %>
         <img class="w-full" src=<%=restaurant.image%> alt="restaurant iamge">
@@ -16,9 +19,6 @@
           <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=cuisine_type%></span>
         <% end %>
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">平均價位: <%=restaurant.price.to_i%></span>
-      </div>
-      <div>
-        <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-2 px-5 bg-gray-200 inline-block font-medium ms-auto", data: {confirm: "Are you sure?"}%>
       </div>
     </div>
   </div>
