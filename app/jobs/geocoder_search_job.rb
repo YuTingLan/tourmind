@@ -3,10 +3,10 @@ class GeocoderSearchJob < ApplicationJob
 
   def perform(restaurant)
     location = Geocoder.search(restaurant.address).first.coordinates
-    if location.present?
-      restaurant.lat =  location.first
-      restaurant.long =  location.last
-      restaurant.save
-    end
+    return unless location.present?
+
+    restaurant.lat = location.first
+    restaurant.long = location.last
+    restaurant.save
   end
 end
