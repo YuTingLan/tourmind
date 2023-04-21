@@ -6,6 +6,9 @@ class SitesController < ApplicationController
   def index
     @sites = Site.order(updated_at: :desc)
     @sites = Site.search(params[:keyword]) if params[:keyword].present?
+    return unless @sites.empty?
+
+    flash.now[:notice] = '沒有找到符合條件的飯店'
   end
 
   def new
