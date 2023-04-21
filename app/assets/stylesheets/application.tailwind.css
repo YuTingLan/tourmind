@@ -12,11 +12,11 @@
 }
 
 .btn-form {
- @apply px-3 bg-green-600 rounded-full;
+ @apply items-center px-2 m-auto bg-green-600 rounded-full;
 }
 
 .btn-add {
- @apply flex px-3 py-2 text-justify bg-pink-300 rounded-full shadow-md;
+ @apply flex px-3 py-2 text-justify bg-blue-300 rounded-full shadow-md;
 }
 
 .container {
