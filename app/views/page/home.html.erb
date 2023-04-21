@@ -23,7 +23,7 @@
 </section>
 <!-- ----------------------------------搜尋欄 -->
 
-<section class="relative px-10 py-4 m-2 ">
+<section class="relative py-4  ">
   <img src="https://fakeimg.pl/300x200/100" alt="圖片" class="w-full h-96 opacity-80">
   <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2">
     <div class="container mx-auto px-4">
@@ -224,7 +224,7 @@
 
       <div class="mx-2 ">
         <div class="relative mx-2">
-          <img src="https://fakeimg.pl/300x200/ccc" alt="熱門景點" class="w-full h-auto rounded-lg">
+          <img src="https://fakeimg.pl/300x200/fa0" alt="熱門景點" class="w-full h-auto rounded-lg">
           <div class="absolute top-0 left-0 m-3 bg-gray-900 text-white text-sm font-medium py-1 px-2 rounded">
             <span>熱門景點</span>
           </div>
@@ -232,7 +232,7 @@
             <span class="text-red-500 text-3xl">&#x2665;</span>
           </div>
           <div class="p-4">
-            <p class="text-gray-100 overflow-ellipsis max-w-[300px]">
+            <p class="text-gray-100 overflow-ellipsis max-w-[200px]">
               在這裡可以輸入文字
             </p>
           </div>
@@ -367,40 +367,43 @@
 </section>
 
 
-<section class=" px-12 py-4" style="min-height: 300px;">
- <div class="flex w-70 mx-auto flex justify-center h-auto bg-blue-300" data-controller="picture">
-  <div class="relative">
+<section class=" px-12 py-4" >
+ <div class="  mx-auto h-auto bg-blue-300 relative" data-controller="picture">
+  <div class=" ">
       <button data-action="click->picture#prevSlide" 
-              class="prev-btn absolute top-1/2 transform -translate-y-1/2 left-0">
+              class="absolute top-1/2 transform -translate-y-1/2 left-0 rounded-full bg-gray-200 w-6 h-6">
        <p><</p>
       </button>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/f00"></div>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/200"></div>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/ccc"></div>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/fa0"></div>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/200"></div>
-      <div data-picture-target="slides"><img src="https://fakeimg.pl/600x200/acc"></div>
+      <div data-picture-target="slides" class="">
+        <img src="https://fakeimg.pl/800x200/f00" class="w-full">
+      </div>
+      <div data-picture-target="slides" class="">
+        <img src="https://fakeimg.pl/800x200/200" class="w-full">
+      </div>
+      <div data-picture-target="slides">
+        <img src="https://fakeimg.pl/800x200/ccc" class="w-full">
+      </div>
+      <div data-picture-target="slides">
+        <img src="https://fakeimg.pl/800x200/fa0" class="w-full">
+      </div>
+      <div data-picture-target="slides">
+        <img src="https://fakeimg.pl/800x200/200" class="w-full">
+      </div>
+      <div data-picture-target="slides" class="">
+        <img src="https://fakeimg.pl/800x200/acc" class="w-full">
+      </div>
       <button data-action="click->picture#nextSlide" 
-              class="next-btn absolute top-1/2 transform -translate-y-1/2 right-0">
+              class="absolute top-1/2 transform -translate-y-1/2 right-0 rounded-full bg-gray-200 w-6 h-6">
         <p>></p>
       </button>
     </div>
   </div>  
 </section>
 
-<section>
-  <div data-controller="switching" class="bg-gray-100 p-4 rounded-md">
-    <h1 class="font-bold text-4xl mb-4">Title</h1>
-    <button data-action="click->switching#open" data-switching-target="openButton" class="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
-      Open
-    </button>
-    <button data-action="click->switching#close" data-switching-target="closeButton" class="bg-red-500 text-white px-4 py-2 rounded-md">
-      Close
-    </button>
-    <div data-switching-target="rat" class="mt-4">
-      <p>0000</p>
-    </div>
+<footer class="w-100 h-96 bg-gray-100">
+  <div>
+    關於我們
   </div>
-</section>
+</footer>
 
 

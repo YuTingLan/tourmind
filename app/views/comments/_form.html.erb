@@ -1,0 +1,36 @@
+<div class="flex justify-center gap-20 bg-blue-500 ">
+  <div class="bg-black rounded-lg shadow-md p-8 mt-8">
+    <!-- 第二個卡片的內容 -->
+    <%= form_for(@comment) do |form| %>
+      <div class="w-full p-8 bg-white rounded-lg shadow-md">
+        <div class="mb-4">
+        <%= form.label :滿意度評分, class: "block mb-2 text-gray-700" %>
+          <% (1..5).each do |i| %>
+          <%= form.radio_button :rating, i, class: "mr-1" %>
+          <%= form.label "rating_#{i}", "", class: "sr-only" %>
+          <% end %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :content, "發表您的評論", class: "block mb-2 text-gray-700" %>
+          <%= form.text_area :content, rows: 4, class: "w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" %>
+        </div>
+
+        <div class="w-2/5">
+          <%= form.label :標題, class: "block mb-2 text-gray-700" %>
+          <%= form.text_field :title, class: "w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" %>
+        </div>
+
+        <% @comment.images.each do |image| %>
+          <%= hidden_field :comment, :images, multiple: true, value: image.identifier %>
+        <% end %>
+          <%= form.file_field :images, multiple: true %>
+     
+        <div class="flex justify-end">
+          <%= form.submit "發表評論", class: "px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600" %>
+      </div>
+          <%= link_to "回首頁", comments_path, class: "block mt-4 text-center text-blue-500 hover:text-blue-600" %>
+    </div>
+    <% end %>
+  </div>
+</div>

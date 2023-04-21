@@ -10,5 +10,4 @@ application.register("moving", MovingController)
 import PictureController from "./picture_controller"
 application.register("picture", PictureController)
 
-import SwitchingController from "./switching_controller"
-application.register("switching", SwitchingController)
+
