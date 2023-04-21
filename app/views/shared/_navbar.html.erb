@@ -1,19 +1,19 @@
- <nav class="flex items-center justify-between h-16 shadow-lg" data-controller="hello">
-        <div class="flex items-center">
-            <i class="px-2 fa-solid fa-heart-pulse fa-xl"></i>
-            <h1 class="font-medium heading-1">TourMind</h1>
-            <i class="w-10 rounded-full ml-[60vw] ring ring-primary ring-offset-base-100">
-                <%= image_tag("img-head.png" , class:"rounded-full truncate") %>
+ <nav class='flex items-center justify-between h-16 shadow-lg' data-controller='hello'>
+        <div class='flex items-center'>
+            <i class='px-2 fa-solid fa-heart-pulse fa-xl'></i>
+            <h1 class='font-medium heading-1'>TourMind</h1>
+            <i class='w-10 rounded-full ml-[60vw] ring ring-primary ring-offset-base-100'>
+                <%= image_tag('img-head.png' , class:'rounded-full truncate') %>
             </i>
         </div>
-        <div class="md:top-[-100%] md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 md:w-auto w-full items-center px-5" data-hello-target="menu" >
-            <ul class="flex md:flex-row flex-col md:items-center md:gap-4[vw] gap-8">
-                <li><i class="fa-solid fa-pencil"></i><%= link_to '評論' , '#' %></li>
-                <li><i class="fa-solid fa-location-dot"></i><%= link_to '旅程' , '#' %></li>
-                <li><i class="fa-solid fa-right-to-bracket"></i><%= link_to '登入' , '#' %></li>
-                <li><i class="fa-solid fa-crown"></i><%= link_to '升級Premium會員' , '#' %></li>
-                <i data-action="click->hello#hello" data-hello-target="btn"
-                        class="px-2 cursor-pointer fa-solid fa-bars fa-xl md:hidden"></i>
+        <div class='md:top-[-100%] md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 md:w-auto w-full items-center px-5' data-hello-target='menu' >
+            <ul class='flex md:flex-row flex-col md:items-center md:gap-4[vw] gap-8'>
+                <li><i class='fa-solid fa-pencil'></i><%= link_to '評論' , '#' %></li>
+                <li><i class='fa-solid fa-location-dot'></i><%= link_to '旅程' , '#' %></li>
+                <li><i class='fa-solid fa-right-to-bracket'></i><%= link_to '登入' , '#' %></li>
+                <li><i class='fa-solid fa-crown'></i><%= link_to '升級Premium會員' , '#' %></li>
+                <i data-action='click->hello#hello' data-hello-target='btn'
+                        class='px-2 cursor-pointer fa-solid fa-bars fa-xl md:hidden'></i>
             </ul>
         </div>
     </nav>
