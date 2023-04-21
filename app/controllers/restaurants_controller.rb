@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
-    # @google_api_key = Rails.application.credentials.GOOGLE_API_KEY
+    @google_api_key = Rails.application.credentials.GOOGLE_API_KEY
   end
 
   # GET /restaurants/new
