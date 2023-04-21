@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
+    # @google_api_key = Rails.application.credentials.GOOGLE_API_KEY
   end
 
   # GET /restaurants/new
@@ -24,7 +25,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.image = "https://fakeimg.pl/300x200" if @restaurant.image.empty?
     if @restaurant.save
-      redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." 
+      get_location
+      redirect_to restaurants_path, notice: "Restaurant was successfully created." 
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,6 +35,7 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
   def update
     if @restaurant.update(restaurant_params)
+      get_location
       redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -49,6 +52,10 @@ class RestaurantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
+    end
+
+    def get_location
+      GeocoderSearchJob.perform_later(@restaurant)
     end
 
     # Only allow a list of trusted parameters through.
