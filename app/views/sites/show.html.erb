@@ -50,7 +50,7 @@
     <p>
       <%=@site.intro%>
     </p>
-  <div class='p-4 bg-white border'>
+    <div class='p-4 bg-white border'>
     <h2 class='py-3 text-2xl font-bold'>位置和聯絡方式</h2>
     <h3 class='text-lg '>地址</h3>
     <p>
@@ -58,20 +58,20 @@
     </p>
     <h3 class='text-lg'>電話</h3>
       <%=@site.tel%>
-  </div>
-  <div class='p-4 bg-white border'>
-    <h2 class='py-3 text-2xl font-bold'>景點類型</h2>
-    <% @site.site_types.each do |site_type| %>
-      <span class='inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full '>
+    </div>
+    <div class='p-4 bg-white border'>
+      <h2 class='py-3 text-2xl font-bold'>景點類型</h2>
+      <% @site.site_types.each do |site_type| %>
+        <span class='inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full '>
         <%=site_type%>
-      </span>
+        </span>
       <% end %>
-  </div>
+    </div>
 
-  <%= link_to '編輯景點資訊' , sites_path(@site), class:'mt-2 rounded-lg py-3 px-5 bg-blue-300 inline-block
-    font-medium'%>
+    <%= link_to '編輯景點資訊' , sites_path(@site), class:'mt-2 rounded-lg py-3 px-5 bg-blue-300 inline-block
+      font-medium'%>
     <%= link_to '返回景點列表' , sites_path, class:'ml-2 rounded-lg py-3 px-5 bg-blue-300 inline-block font-medium' %>
-</div>
+  </div>
 </div>
 
 
