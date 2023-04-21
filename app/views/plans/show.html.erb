@@ -4,7 +4,9 @@
     <%= link_to "編輯行程", edit_plan_path(@plan), class: "text-blue-600"%>
   </div>
   <h1 class="mx-auto my-10"><%= @plan.name %></h1>
-  <p class="mx-20"><%= @plan.description %></p>
+  <p class="mx-20 my-3"><%= @plan.description %></p>
+  <p class="mx-20 my-3">天數： <%= @plan.days %></p>
+  <p class="mx-20 my-3">分類： <%= @plan.category %></p>
   <% if @plan.locations != nil %>
     <div class="flex bg-white rounded-lg shadow-xl mt-4 p-8 gap-5 flex-wrap">
       <% @plan.locations.each_key.with_index do |key, i| %>
