@@ -1,28 +1,27 @@
-<div class="flex items-center justify-between">
-  <h1 class="text-4xl font-bold">飯店</h1>
-  <%= link_to '新增飯店' , new_hotel_path, class:"rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+<div class='flex items-center justify-between'>
+  <h1 class='text-4xl font-bold'>飯店</h1>
+  <%= link_to '新增飯店' , new_hotel_path, class:'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium' %>
 </div>
 
-<div class="flash">
+<div class='flash'>
   <%= flash[:notice] %>
 </div>
 
-<form class="flex justify-center">
-  <input type="text" name="keyword" value="<%= params[:keyword]%>" placeholder="請輸入關鍵字...."
-    class="w-full max-w-xl input input-bordered input-primary">
-  <input type="submit" class="btn-add" value="查詢">
+<form class='flex justify-center'>
+  <input type='text' name='keyword' value='<%= params[:keyword]%>' placeholder='請輸入關鍵字....' class='w-full max-w-xl input input-bordered input-primary'>
+  <input type='submit' class='btn-add' value='查詢'>
 </form>
 
-<section class="container px-2 py-2">
-  <section class="w-1/4"></section>
+<section class='container px-2 py-2'>
+  <section class='w-1/4'></section>
 
-  <section class="w-3/4">
+  <section class='w-3/4'>
     <% @hotels.each do |hotel| %>
-      <section class="flex grid-cols-3 border-2 border-black">
-        <div class="w-1/3">
-          <img src="https://fakeimg.pl/350x200/?text=Hello" class="h-full">
+      <section class='flex grid-cols-3 border-2 border-black'>
+        <div class='w-1/3'>
+          <img src='https://fakeimg.pl/350x200/?text=Hello' class='h-full'>
         </div>
-        <div class="w-1/3 mx-10 h-90">
+        <div class='w-1/3 mx-10 h-90'>
           <h2>名稱:<%= link_to hotel.name , hotel_path(hotel.id) %>
           </h2>
           <p>飯店網站:<%= link_to hotel.name , hotel.website %>
@@ -37,18 +36,18 @@
           </p>
           <p>簡介:<%= hotel.intro&.truncate(30)%>
           </p>
-          <button class="btn-form">
+          <button class='btn-form'>
             <%= link_to '編輯' , edit_hotel_path(hotel.id) %>
           </button>
-          <button class="btn-form">
+          <button class='btn-form'>
             <%= link_to '刪除' , hotel_path(hotel.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
           </button>
         </div>
-        <div class="w-1/3 mx-10 h-90">
+        <div class='w-1/3 mx-10 h-90'>
           <h2>飯店設備</h2>
           <% hotel.equipment_types.each do |equipment| %>
             <span
-              class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full ">
+              class='inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full '>
               <%=equipment%>
             </span>
             <% end %>
