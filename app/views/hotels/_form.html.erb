@@ -63,19 +63,19 @@
     <div class='my-5'>
       <%= form.label :equipment_types , '飯店設備' , class:'block'%>
         <% equipment_types=%w[免費WIFI 免費停車 游泳池 餐廳 健身中心 酒吧 可攜帶寵物 行李存放 乾洗服務 自助洗衣服務 腳踏車租賃] %>
-            <div>
-              <% equipment_types.each do |equipment| %>
-                <label class='inline-flex items-center mr-4'>
-                  <%= check_box_tag 'hotel[equipment_types][]' , equipment, @hotel.equipment_types.include?(equipment),
-                    class:'form-checkbox h-5 w-5 text-gray-600' %>
-                    <%= equipment %>
-                </label>
-                <% end %>
-            </div>
+          <div>
+            <% equipment_types.each do |equipment| %>
+              <label class='inline-flex items-center mr-4'>
+                <%= check_box_tag 'hotel[equipment_types][]' , equipment, @hotel.equipment_types.include?(equipment),
+                  class:'form-checkbox h-5 w-5 text-gray-600' %>
+                  <%= equipment %>
+              </label>
+            <% end %>
+          </div>
     </div>
 
     <div class='inline'>
       <%= form.submit '提交' , class:'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer'
         %>
     </div>
-    <% end %>
+<% end %>
