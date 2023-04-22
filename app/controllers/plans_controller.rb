@@ -22,7 +22,14 @@ class PlansController < ApplicationController
   end
 
   def update
-    return redirect_to plan_path(@plan.id) if @plan.update(plan_params)
+    plan_data = plan_info
+    plan_data[:locations] = update_order(plan_data, @plan)
+
+    if @plan.update(plan_data)
+      render json: { status: "success", redirect_url: "/plans/#{@plan.id}" }
+      return
+    end
+
     render :new
   end
 
@@ -36,7 +43,18 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
   end
 
-  def plan_params
-    params.require(:plan).permit(:name, :description, :days, :category)
+  def plan_info
+    params
+      .require(:data)
+      .permit(:name, :description, :days, locations: {})
+      .tap { |field| field[:locations] = params[:data][:locations].permit! }
+  end
+
+  def update_order(locations, reference)
+    locations[:locations].each_key do |key|
+      locations[:locations][key] = locations[:locations][key].map do |location|
+        reference[:locations][location[0]][location[1] - 1]
+      end
+    end
   end
 end

@@ -8,7 +8,7 @@
   <p class="mx-20 my-3">天數： <%= @plan.days %></p>
   <p class="mx-20 my-3">分類： <%= @plan.category %></p>
   <% if @plan.locations != nil %>
-    <div class="flex bg-white rounded-lg shadow-xl mt-4 p-8 gap-5 flex-wrap">
+    <div class="flex bg-white rounded-lg shadow-xl mt-4 p-8 gap-5 flex-wrap mx-12">
       <% @plan.locations.each_key.with_index do |key, i| %>
         <div class="relative px-4">
           <h4 class="text-xl text-gray-900 font-bold">第<%= i + 1 %>天</h4>
