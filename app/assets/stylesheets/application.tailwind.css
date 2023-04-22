@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .navbar-menu {
+    @apply bg-white absolute shadow-md md:shadow-none top-16 left-0 md:static md:flex-row md:items-center;
+  }
+}
 /*
 
 @layer components {
