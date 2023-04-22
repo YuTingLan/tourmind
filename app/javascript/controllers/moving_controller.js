@@ -35,9 +35,6 @@ export default class extends Controller {
         slide.style.display = "none"; // 隱藏其他元素
         slide.style.opacity = "0"; // 將透明度設為 0，實現淡出效果
       }
-
     });
-    console.log('updateSlides has been executed')
   }
-
 }

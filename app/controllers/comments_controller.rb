@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: %i[ show edit update destroy ]
   def index 
     if params[:keyword].present?
-      @comments = Comment.where("author LIKE ?", "%#{params[:keyword]}%")
+      @comments = Comment.by_content(params[:keyword])
     else
       @comments = Comment.all
     end
@@ -17,15 +18,14 @@ class CommentsController < ApplicationController
       render :new 
     end
   end
+
   def show 
-    @comment = Comment.find_by(id: params[:id])
   end
+
   def edit
-    @comment = Comment.find_by(id: params[:id])
   end
 
   def update
-    @comment = Comment.find_by(id: params[:id])
     if @comment.update(commemt_params)
       redirect_to comments_path, notice: '編輯成功'
     else 
@@ -33,13 +33,15 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy 
-    @comment = Comment.find_by(id: params[:id])
+  def destroy
     @comment.destroy
     redirect_to comments_path
   end
   private 
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
     def commemt_params 
       params.require(:comment).permit(:content,:title,:author,:rating, :image,images: [])
-  end
-  end
+    end
+end
