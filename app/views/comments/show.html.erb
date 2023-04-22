@@ -12,17 +12,12 @@
       <strong>內容:</strong>
       <span class="text-gray-600"><%= @comment.content %></span>
     </p>
-    <p class="mt-2 ">
-      <strong>圖片:</strong>
-      <%= image_tag @comment.image.url, class: 'mt-2 max-w-full h-auto' if @comment.image.url.present? %>
-    </p>
-
+    
     <div class="mt-2 max-w-4xl">
-      <!-- Use Tailwind CSS grid and flex utilities for displaying multiple images -->
       <div class="flex w-full gap-2">
-        <% @comment.images.each do |avatar| %>
+        <% @comment.images.each do |image| %>
           <div class="w-full max-w-md">
-            <%= image_tag avatar.url, class: 'max-w-md object-cover object-center w-full h-full' if avatar.url.present? %>
+            <%= image_tag image.url, class: 'max-w-md object-cover object-center w-full h-full' if image.url.present? %>
           </div>
         <% end %>
       </div>

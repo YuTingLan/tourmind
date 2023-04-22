@@ -11,34 +11,35 @@
   <!-- 卡片區域 -->
   <div class="flex flex-wrap w-full md:w-2/3  gap-4 p-4">
     <%= link_to '發表評論', new_comment_path %>
-      <% @comments.each do |comment| %>
+    <% @comments.each do |comment| %>
     <div class="flex-shrink-0 w-full  p-4 ">
       <div class="p-4 border border-gray-500 rounded-lg">
-        <%= link_to comment.author, comment_path(comment.id) %>
-        <div>
-          <%=  comment.title %>
-        </div>
-        <div>
-          <%=  comment.rating %>
-        </div>
-        <div>
-          <%=  comment.content %>
-        </div>
-        <div class="flex ml-4 gap-2">
-          <% if comment.images.present? %>
-            <% comment.images.each do |image| %>
-        <div class="w-24 h-24 ">
-            <%= image_tag image.url, class: "w-full h-full object-cover" %>
-        </div>
-            <% end %>
-          <% else %>
-            <!-- 顯示預設圖片或其他提示 -->
-          <% end %>
-        </div>
-          <%= link_to '編輯', edit_comment_path(comment.id) %>
-          <%= link_to '刪除', comment_path(comment.id), method: "delete", data: { confirm: 'Are you sure?' } %>
-        </div>
+      <%= comment.author %>
+      <div>
+      <%=  comment.title %>
       </div>
+      <div>
+      <%=  comment.rating %>
+      </div>
+      <div>
+      <%=  comment.content %>
+      </div>
+      <div class="flex ml-4 gap-2">
+        <% if comment.images.present? %>
+        <% comment.images.each do |image| %>
+        <div class="w-24 h-24 ">
+          <%= image_tag image.url, class: "w-full h-full object-cover" %>
+        </div>
+        <% end %>
+        <% else %>
+          <!-- 顯示預設圖片或其他提示 -->
+        <% end %>
+      </div>
+      <div>
+        <%= link_to '編輯', edit_comment_path(comment) %>
+        <%= link_to '刪除', comment_path(comment), method: "delete", data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>
