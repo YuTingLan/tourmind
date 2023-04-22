@@ -4,97 +4,86 @@
     <div class="border flex-grow text-center py-2 font-medium text-sm cursor-pointer" data-action="click->hotel#toggleFilterMenu">篩選</div>
     <div class="border flex-grow text-center py-2 font-medium text-sm cursor-pointer">地圖</div>
   </div>
-  <div class="bg-gray-100">
-    <section class="container m-auto flex py-5">
+  <div class="bg-gray-100 " >
+    <section class="container m-auto flex py-5 min-h-full">
       <section data-hotel-target="filterMenu" class="hidden lg:block absolute left-0 top-0 lg:static lg:w-72 w-full h-max bg-white px-6 mr-3 bd shadow-lg rounded-md">
         <div class="lg:hidden flex justify-end pt-6">
           <button data-action="click->hotel#toggleFilterMenu"><i class="text-lg fa-solid fa-xmark"></i></button>
         </div>
         <div class="border-b py-6">
-          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
-            特價<i class="px-1 fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
-            <li class="py-1"><input class="mr-2" type="checkbox">可全額退款</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">不需預先付款</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">有優惠方案的物業</li>
-          </ul>
-        </div>
-        <div class="border-b py-6">
-          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
-            熱門<i class="px-1 fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
-            <li class="py-1"><input class="mr-2" type="checkbox">含早餐</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">4星級</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">經濟實惠</li>
-          </ul>
-        </div>
-        <div class="border-b py-6">
-          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
-            物業類型<i class="px-1 fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
-            <li class="py-1"><input class="mr-2" type="checkbox">飯店</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">汽車旅館</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">民宿和飯店</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">青年旅社</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">特色住宿</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">小房</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">膠囊旅館</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">公寓</li>
-          </ul>
-        </div>
-        <div class="py-6">
-          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
-            設備<i class="px-1 fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
-            <li class="py-1"><input class="mr-2" type="checkbox">免費無線網路</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">含早餐</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">游泳池</li>
-            <li class="py-1"><input class="mr-2" type="checkbox">免費停車</li>
-          </ul>
-        </div>
-      </section>
-      <section class="flex-grow">
-        <div class="py-2">板橋的 64 家物業</div>
-        <div class="flex bg-white rounded-md overflow-hidden shadow-lg mb-3">
-          <div class="md:w-72 md:h-64">
-            <img class="object-cover w-full h-full"
-            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=300&h=300&s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=500&h=500&s=1 2x">
+          <div class="border-b py-6">
+            <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+              熱門<i class="px-1 fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+              <li class="py-1"><input class="mr-2" type="checkbox">含早餐</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">4星級</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">經濟實惠</li>
+            </ul>
           </div>
-          <div class="flex-grow">
-            <h2 class="text-xl font-medium p-4">趣淘漫旅</h2>
-            <div class="flex">
-              <ul class="flex flex-col justify-between w-1/2 border-r px-4">
-                <li>飯店網站:</li>
-                <li>地址:</li>
-                <li>電話:</li>
-                <li>緯度:</li>
-                <li>經度:</li>
-                <li>簡介:</li>
-              </ul>
-              <div class="w-1/2 px-4">
-                <h2 class="font-medium">飯店設備</h2>
-                <ul>
-                  <li class="leading-7">免費無線網路</li>
-                  <li class="leading-7">含早餐</li>
-                  <li class="leading-7">游泳池</li>
-                  <li class="leading-7">免費停車</li>
+          <div class="border-b py-6">
+            <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+              住宿類型<i class="px-1 fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+              <li class="py-1"><input class="mr-2" type="checkbox">飯店</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">民宿</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">青年旅館</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">度假村</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">日租套房</li>
+            </ul>
+          </div>
+          <div class="py-6">
+            <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+              設備<i class="px-1 fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+              <li class="py-1"><input class="mr-2" type="checkbox">免費無線網路</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">健身房</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">游泳池</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">免費停車</li>
+              <li class="py-1"><input class="mr-2" type="checkbox">酒吧</li>
+            </ul>
+          </div>
+        </section>
+        <section class="flex-grow">
+          <div class="py-2">板橋的 64 家物業</div>
+          <div class="flex bg-white rounded-md overflow-hidden shadow-lg mb-3">
+            <div class="md:w-72 md:h-64">
+              <img class="object-cover w-full h-full"
+            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=300&h=300&s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=500&h=500&s=1 2x">
+            </div>
+            <div class="flex-grow">
+              <h2 class="text-xl font-medium p-4">趣淘漫旅</h2>
+              <div class="flex">
+                <ul class="flex flex-col justify-between w-1/2 border-r px-4">
+                  <li>飯店網站:</li>
+                  <li>地址:</li>
+                  <li>電話:</li>
+                  <li>緯度:</li>
+                  <li>經度:</li>
+                  <li>簡介:</li>
                 </ul>
+                <div class="w-1/2 px-4">
+                  <h2 class="font-medium">飯店設備</h2>
+                  <ul>
+                    <li class="leading-7">免費無線網路</li>
+                    <li class="leading-7">含早餐</li>
+                    <li class="leading-7">游泳池</li>
+                    <li class="leading-7">免費停車</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </section>
-    </section>
+    </div>
   </div>
-</div>
-<%
+  <%
 =begin%>
-<div class="flash">
-  <%= flash[:notice] %>
-</div>
-<%
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+  <%
 =end%>

@@ -5,11 +5,9 @@ export default class extends Controller {
     static targets = ["navbarMenu"]
 
     initialize() {
-        console.log('navbar');
     }
 
     toggleNavbarMenu() {
-        // this.navbarMenuTarget.classList.toggle('active');
-        console.log(navbar)
+        this.navbarMenuTarget.classList.toggle('hidden');
     }
 }

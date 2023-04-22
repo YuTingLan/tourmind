@@ -1,81 +1,70 @@
 <%= form_with(model: hotel, class:'contents') do |form| %>
   <%= render 'shared/error_message' , record: hotel %>
-    <div class='my-5'>
-      <%= form.label :name ,'飯店名稱' %>
-        <%= form.text_field :name, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  <div class='my-5'>
+    <%= form.label :name ,'飯店名稱' %>
+    <%= form.text_field :name, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :website ,'網站' %>
-        <%= form.text_field :website, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :website ,'網站' %>
+    <%= form.text_field :website, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :tel,'電話' %>
-        <%= form.text_field :tel, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :tel,'電話' %>
+    <%= form.text_field :tel, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :star_rating , '星級數' %>
-        <%= form.text_field :star_rating, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :star_rating , '星級數' %>
+    <%= form.text_field :star_rating, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
           mt-2 w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :address , '地址' %>
-        <%= form.text_area :address, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :address , '地址' %>
+    <%= form.text_area :address, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :latitude , '緯度' %>
-        <%= form.text_field :latitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :latitude , '緯度' %>
+    <%= form.text_field :latitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :longitude , '經度' %>
-        <%= form.text_field :longitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :longitude , '經度' %>
+    <%= form.text_field :longitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
           mt-2 w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :intro , '簡介' %>
-        <%= form.text_area :intro, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :intro , '簡介' %>
+    <%= form.text_area :intro, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :image , '照片' %>
-        <%= form.file_field :image, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+  </div>
+  <div class='my-5'>
+    <%= form.label :image , '照片' %>
+    <%= form.file_field :image, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
           w-full' %>
-    </div>
-    
-    <div class='my-5'>
-      <%= form.label :hotel_type , '飯店類型' %>
-        <%= form.select :hotel_type , options_for_select([ '旅館' , '民宿' , '度假村' , '青年旅館' , '日租套房' ], '請選擇飯店類型' ),
-          prompt: '請選擇飯店類型' %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :equipment_types , '飯店設備' , class:'block'%>
-        <% equipment_types=%w[免費WIFI 免費停車 游泳池 餐廳 健身中心 酒吧 可攜帶寵物 行李存放 乾洗服務 自助洗衣服務 腳踏車租賃] %>
-          <div>
-            <% equipment_types.each do |equipment| %>
-              <label class='inline-flex items-center mr-4'>
-                <%= check_box_tag 'hotel[equipment_types][]' , equipment, @hotel.equipment_types.include?(equipment),
+  </div>
+  <div class='my-5'>
+    <%= form.label :hotel_type , '住宿類型' %>
+    <%= form.select :hotel_type , options_for_select([ '飯店' , '民宿' , '度假村' , '青年旅館' , '日租套房' ], '請選擇住宿類型' ),
+          prompt: '請選擇住宿類型' %>
+  </div>
+  <div class='my-5'>
+    <%= form.label :equipment_types , '飯店設備' , class:'block'%>
+    <% equipment_types=%w[免費WIFI 免費停車 游泳池 餐廳 健身中心 酒吧 可攜帶寵物 行李存放 乾洗服務 自助洗衣服務 腳踏車租賃] %>
+    <div>
+      <% equipment_types.each do |equipment| %>
+        <label class='inline-flex items-center mr-4'>
+          <%= check_box_tag 'hotel[equipment_types][]' , equipment, @hotel.equipment_types.include?(equipment),
                   class:'form-checkbox h-5 w-5 text-gray-600' %>
-                  <%= equipment %>
-              </label>
-            <% end %>
-          </div>
+          <%= equipment %>
+        </label>
+      <% end %>
     </div>
-
-    <div class='inline'>
-      <%= form.submit '提交' , class:'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer'
+  </div>
+  <div class='inline'>
+    <%= form.submit '提交' , class:'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer'
         %>
-    </div>
+  </div>
 <% end %>

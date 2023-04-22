@@ -1,28 +1,30 @@
 <nav class="flex items-center justify-between h-16 bg-white border-b sticky top-0" data-controller="navbar">
   <div class="flex items-center">
-    <button data-action="click->navbar#toggleNavbarMenu">
-      <i class="px-2 cursor-pointer fa-solid fa-bars fa-xl md:hidden"></i>
+    <button class="px-2 md:hidden" data-action="click->navbar#toggleNavbarMenu">
+      <i class="fa-solid fa-bars fa-xl"></i>
     </button>
     <i class="px-2 fa-solid fa-heart-pulse fa-xl"></i>
     <h1 class="font-medium heading-1">TourMind</h1>
-    <section data-navbar-target="navbarMenu" class="hidden lg:block absolute left-0 top-0 lg:static lg:w-72 w-full h-max bg-red px-6 mr-3 bd shadow-lg rounded-md">
-      <div class="lg:hidden flex justify-end pt-6">
-      </div>
-    </div>
-  </section>
+  </div>
   <div class="flex items-center px-2">
-    <ul class="md:flex md:flex-row md:items-center hidden">
-      <li class="px-2"><i class="fa-solid fa-pencil"></i>
-        <%= link_to '評論' , '#' %>
+    <form class="flex justify-center px-5">
+      <div class="border-2 rounded-full flex items-center  border-gray-700 ">
+      <input type="text" name="keyword" value="<%= params[:keyword]%>" placeholder="請輸入關鍵字...." class="border-0 bg-transparent focus:ring-transparent">
+      <i class="fa-solid fa-magnifying-glass w-4 mr-2 px-5 py-2"></i>
+      </div>
+    </form>
+    <ul data-navbar-target="navbarMenu" class="navbar-menu hidden md:flex">
+      <li class="px-5 py-2 md:px-2"><i class="fa-solid fa-pencil w-4 mr-2"></i>
+        <%= link_to "評論" , "#" %>
       </li>
-      <li class="px-2"><i class="fa-solid fa-location-dot"></i>
-        <%= link_to '旅程' , '#' %>
+      <li class="px-5 py-2 md:px-2"><i class="fa-solid fa-location-dot w-4 mr-2"></i>
+        <%= link_to "旅程" , "#" %>
       </li>
-      <li class="px-2"><i class="fa-solid fa-right-to-bracket"></i>
-        <%= link_to '登入' , '#' %>
+      <li class="px-5 py-2 md:px-2"><i class="fa-solid fa-right-to-bracket w-4 mr-2"></i>
+        <%= link_to "登入" , "#" %>
       </li>
-      <li class="px-2"><i class="fa-solid fa-crown"></i>
-        <%= link_to '升級Premium會員' , '#' %>
+      <li class="px-5 py-2 md:px-2"><i class="fa-solid fa-crown w-4 mr-2"></i>
+        <%= link_to "升級Premium會員" , "#" %>
       </li>
     </ul>
     <i class="rounded-full ring ring-primary ring-offset-base-100">
