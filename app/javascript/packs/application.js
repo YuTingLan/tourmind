@@ -6,6 +6,7 @@ import "controllers"
 import "@hotwired/turbo-rails"
 //FONTAWESOME
 import "scripts"
+import "controllers"
 
 Rails.start()
 Turbolinks.start()

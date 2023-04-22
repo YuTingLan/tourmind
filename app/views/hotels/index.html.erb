@@ -1,58 +1,100 @@
-<div class='flex items-center justify-between'>
-  <h1 class='text-4xl font-bold'>飯店</h1>
-  <%= link_to '新增飯店' , new_hotel_path, class:'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium' %>
-</div>
-
-<div class='flash'>
-  <%= flash[:notice] %>
-</div>
-
-<form class='flex justify-center'>
-  <input type='text' name='keyword' value='<%= params[:keyword]%>' placeholder='請輸入關鍵字....' class='w-full max-w-xl input input-bordered input-primary'>
-  <input type='submit' class='btn-add' value='查詢'>
-</form>
-
-<section class='container px-2 py-2'>
-  <section class='w-1/4'></section>
-
-  <section class='w-3/4'>
-    <% @hotels.each do |hotel| %>
-      <section class='flex grid-cols-3 border-2 border-black'>
-        <div class='w-1/3'>
-          <img src='https://fakeimg.pl/350x200/?text=Hello' class='h-full'>
+<div data-controller="hotel">
+  <div class="w-full flex justify-around lg:hidden">
+    <div class="border flex-grow text-center py-2 font-medium text-sm cursor-pointer">排序</div>
+    <div class="border flex-grow text-center py-2 font-medium text-sm cursor-pointer" data-action="click->hotel#toggleFilterMenu">篩選</div>
+    <div class="border flex-grow text-center py-2 font-medium text-sm cursor-pointer">地圖</div>
+  </div>
+  <div class="bg-gray-100">
+    <section class="container m-auto flex py-5">
+      <section data-hotel-target="filterMenu" class="hidden lg:block absolute left-0 top-0 lg:static lg:w-72 w-full h-max bg-white px-6 mr-3 bd shadow-lg rounded-md">
+        <div class="lg:hidden flex justify-end pt-6">
+          <button data-action="click->hotel#toggleFilterMenu"><i class="text-lg fa-solid fa-xmark"></i></button>
         </div>
-        <div class='w-1/3 mx-10 h-90'>
-          <h2>名稱:<%= link_to hotel.name , hotel_path(hotel.id) %>
-          </h2>
-          <p>飯店網站:<%= link_to hotel.name , hotel.website %>
-          </p>
-          <p>地址:<%= hotel.address %>
-          </p>
-          <p>電話:<%= hotel.tel %>
-          </p>
-          <p>緯度:<%= hotel.latitude %>
-          </p>
-          <p>經度:<%= hotel.longitude %>
-          </p>
-          <p>簡介:<%= hotel.intro&.truncate(30)%>
-          </p>
-          <button class='btn-form'>
-            <%= link_to '編輯' , edit_hotel_path(hotel.id) %>
+        <div class="border-b py-6">
+          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+            特價<i class="px-1 fa-solid fa-chevron-down"></i>
           </button>
-          <button class='btn-form'>
-            <%= link_to '刪除' , hotel_path(hotel.id),method:'delete',data:{confirm:'確定刪除嗎？'} %>
-          </button>
+          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+            <li class="py-1"><input class="mr-2" type="checkbox">可全額退款</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">不需預先付款</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">有優惠方案的物業</li>
+          </ul>
         </div>
-        <div class='w-1/3 mx-10 h-90'>
-          <h2>飯店設備</h2>
-          <% hotel.equipment_types.each do |equipment| %>
-            <span
-              class='inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full '>
-              <%=equipment%>
-            </span>
-          <% end %>
+        <div class="border-b py-6">
+          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+            熱門<i class="px-1 fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+            <li class="py-1"><input class="mr-2" type="checkbox">含早餐</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">4星級</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">經濟實惠</li>
+          </ul>
+        </div>
+        <div class="border-b py-6">
+          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+            物業類型<i class="px-1 fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+            <li class="py-1"><input class="mr-2" type="checkbox">飯店</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">汽車旅館</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">民宿和飯店</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">青年旅社</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">特色住宿</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">小房</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">膠囊旅館</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">公寓</li>
+          </ul>
+        </div>
+        <div class="py-6">
+          <button class="py-2" data-action="click->hotel#toggleFilterCategory">
+            設備<i class="px-1 fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="flex flex-col overflow-hidden max-h-0 max-h-96">
+            <li class="py-1"><input class="mr-2" type="checkbox">免費無線網路</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">含早餐</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">游泳池</li>
+            <li class="py-1"><input class="mr-2" type="checkbox">免費停車</li>
+          </ul>
         </div>
       </section>
-    <% end %>
-  </section>
-</section>
+      <section class="flex-grow">
+        <div class="py-2">板橋的 64 家物業</div>
+        <div class="flex bg-white rounded-md overflow-hidden shadow-lg mb-3">
+          <div class="md:w-72 md:h-64">
+            <img class="object-cover w-full h-full"
+            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=300&h=300&s=1 1x,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c0/c1/4a/photo8jpg.jpg?w=500&h=500&s=1 2x">
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-xl font-medium p-4">趣淘漫旅</h2>
+            <div class="flex">
+              <ul class="flex flex-col justify-between w-1/2 border-r px-4">
+                <li>飯店網站:</li>
+                <li>地址:</li>
+                <li>電話:</li>
+                <li>緯度:</li>
+                <li>經度:</li>
+                <li>簡介:</li>
+              </ul>
+              <div class="w-1/2 px-4">
+                <h2 class="font-medium">飯店設備</h2>
+                <ul>
+                  <li class="leading-7">免費無線網路</li>
+                  <li class="leading-7">含早餐</li>
+                  <li class="leading-7">游泳池</li>
+                  <li class="leading-7">免費停車</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</div>
+<%
+=begin%>
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+<%
+=end%>

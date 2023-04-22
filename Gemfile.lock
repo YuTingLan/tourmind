@@ -222,7 +222,6 @@ GEM
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
-    rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -348,6 +347,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
+  stimulus-rails
   tailwindcss-rails (~> 2.0)
   turbolinks (~> 5)
   tzinfo-data
