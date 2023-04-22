@@ -1,16 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  #更新使用者資訊
+  #resource= User, params = 要更新的參數
   def update_resource(resource, params)
-    if resource.provider == 'google_oauth2'|| 'line' || 'facebook'
-      params.delete('current_password')
-      resource.password = params['password']
-      resource.update(account_update_params)
-    else
-      resource.update(account_update_params)
-    end
+    resource.update(account_update_params)
   end
 
   private
+  #取得使用者資料允許更新的參數
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :name, :city, :tel)
+    params.require(:user).permit(:email, :name, :city, :tel, :avatar_url)
   end
 end

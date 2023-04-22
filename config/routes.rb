@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  root 'page#home'
   # resources :passwords, only: [:edit, :update]
 
   devise_for :users, controllers: {

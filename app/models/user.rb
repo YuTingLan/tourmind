@@ -1,14 +1,11 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
   #驗證必填欄位
-  validates :tel, presence: true
+  # 驗證 email 欄位，只有在 email 欄位存在的情況下才進行驗證
   validates :email,
             presence: true,
             format: {
               with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/,
-            }
+            }, if: -> { email.present? }
   
    #confirmable -> 確認mail認證
    devise :database_authenticatable, :registerable,
@@ -16,6 +13,7 @@ class User < ApplicationRecord
    :omniauthable, omniauth_providers: [:google_oauth2, :line, :facebook]
    
 
+  #第三方認證登入後，創建用戶資料庫
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     if auth.provider == "google_oauth2"
@@ -36,10 +34,12 @@ class User < ApplicationRecord
     end
   end
 
+  #不需要用戶回傳email, line不會回傳
   def email_required?
     false
   end
 
+  #不需要用戶提供密碼, 第三方登入不需要輸入密碼
   def password_required?
     false
   end
