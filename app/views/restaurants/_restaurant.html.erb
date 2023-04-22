@@ -3,9 +3,9 @@
     <div>
       <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-1 px-3 bg-gray-200 inline-block font-medium ms-auto absolute top-1 start-1", data: {confirm: "Are you sure?"}%>
     </div>
-    <div>
+    <div class="h-2/3">
       <%= link_to restaurant do %>
-        <img class="w-full" src=<%=restaurant.image%> alt="restaurant iamge">
+        <img class="h-full w-full" src=<%=restaurant.image%> alt="restaurant iamge">
       <% end %>
     </div>
     <div class="px-6 py-4">

@@ -9,8 +9,8 @@
     </Section>
 
     <section class = "justify-center flex px-4 grid grid-cols-3 gap-4">
-      <div class = "col-span-2">
-        <img class="w-full" src=<%=@restaurant.image%> alt="restaurant iamge">
+      <div class = "col-span-2 aspect-[5/3]">
+        <img class="w-full h-full" src=<%=@restaurant.image%> alt="restaurant iamge">
       </div>
       <%= render "location", restaurant:@restaurant%>
     </section>
