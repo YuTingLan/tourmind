@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 //FONTAWESOME
 import "scripts"
+import "controllers"
 
 Rails.start()
 Turbolinks.start()
