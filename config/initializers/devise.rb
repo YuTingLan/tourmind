@@ -26,18 +26,18 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.navigational_formats = ['*/*', :html, :turbo_stream]
   config.mailer_sender = 'tourmind@gmail.com'
-  #Google
-  config.omniauth :google_oauth2, 
-                   Rails.application.credentials.dig(:google_oauth_client_id),
-                   Rails.application.credentials.dig(:google_oauth_client_secret)
-  #Line
-  config.omniauth :line, 
-                    Rails.application.credentials.dig(:line_client_id),
-                    Rails.application.credentials.dig(:line_client_secret)
-  #Facebook
-  config.omniauth :facebook, 
-                    Rails.application.credentials.dig(:facebook_client_id),
-                    Rails.application.credentials.dig(:facebook_client_secret)
+  # Google
+  config.omniauth :google_oauth2,
+                  Rails.application.credentials[:google_oauth_client_id],
+                  Rails.application.credentials[:google_oauth_client_secret]
+  # Line
+  config.omniauth :line,
+                  Rails.application.credentials[:line_client_id],
+                  Rails.application.credentials[:line_client_secret]
+  # Facebook
+  config.omniauth :facebook,
+                  Rails.application.credentials[:facebook_client_id],
+                  Rails.application.credentials[:facebook_client_secret]
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
