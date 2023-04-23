@@ -30,7 +30,11 @@ class PlansController < ApplicationController
       return
     end
 
-    render :new
+    render json: {
+             status: "server error",
+             redirect_url: "/plans/#{@plan.id}",
+           },
+           status: :internal_server_error
   end
 
   def destroy

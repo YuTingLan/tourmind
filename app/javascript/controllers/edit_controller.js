@@ -3,12 +3,14 @@ import { patch } from "@rails/request.js";
 
 // Connects to data-controller="send"
 export default class extends Controller {
+  static targets = ["name", "description", "container"];
+
   async update() {
     try {
       const data = {
-        name: this.element.querySelector(".name").value,
-        description: this.element.querySelector(".description").value,
-        days: this.element.querySelector(".days").value,
+        name: this.nameTarget.value,
+        description: this.descriptionTarget.value,
+        days: +this.containerTarget.dataset.days,
         locations: {},
       };
 
@@ -38,9 +40,30 @@ export default class extends Controller {
 
       const { redirect_url } = await res.json;
 
-      if (res.ok) window.location.replace(redirect_url);
+      if (res.ok) return window.location.replace(redirect_url);
+
+      alert("Something went wrong!");
+      window.location.replace(redirect_url);
     } catch (err) {
       alert(err.message);
     }
+  }
+
+  addDay() {
+    const dayElement = `
+    <div class="relative px-4 day">
+      <h4 class="text-xl text-gray-900 font-bold">第${
+        +this.containerTarget.dataset.days + 1
+      }天</h4>
+      <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+      <div data-controller="sorting" class="h-full w-full" id="plan-day-${
+        +this.containerTarget.dataset.days + 1
+      }">
+        <div></div>
+      </div>
+    </div>`;
+
+    this.containerTarget.dataset.days = +this.containerTarget.dataset.days + 1;
+    this.containerTarget.insertAdjacentHTML("beforeend", dayElement);
   }
 }
