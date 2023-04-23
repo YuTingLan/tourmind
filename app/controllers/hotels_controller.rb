@@ -4,12 +4,25 @@ class HotelsController < ApplicationController
   before_action :set_hotel, only: %i[show edit update destroy]
 
   def index
-    @hotels = Hotel.order(updated_at: :desc)
-    @hotels = @hotels.search(params[:keyword]) if params[:keyword].present?
-
-    return unless @hotels.empty?
-
-    flash.now[:notice] = '沒有找到符合條件的飯店'
+     if params[:keyword].present?
+        @hotels = Hotel.search(params[:keyword]).order(updated_at: :desc)
+     else
+        @hotels = Hotel.order(updated_at: :desc)
+     end
+    if  @hotels.empty?
+        flash.now[:notice] = '沒有找到符合條件的飯店' and return
+    end
+  
+    @hotels.map { |hotel|
+      if hotel.image.nil? || hotel.image.empty?
+        hotel.image = "https://fakeimg.pl/400x200/?text=Hello"
+      end
+    }
+    @hotel_equipment = @hotels.map { |hotel|
+      if hotel.equipment_types.present?
+      hotel.equipment_types
+      end
+    }
   end
 
   def new
@@ -25,7 +38,11 @@ class HotelsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+     if @hotel.image.nil? || @hotel.image.empty?
+      @hotel.image = "https://fakeimg.pl/400x200/?text=Hello"
+    end
+  end
 
   def edit; end
 
