@@ -12,8 +12,7 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <%= yield %>
+    <div class='hidden'><%= render 'shared/flash' if flash.any? %></div>
   </body>
 </html>
