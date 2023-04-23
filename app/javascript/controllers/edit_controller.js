@@ -40,9 +40,8 @@ export default class extends Controller {
 
       const { redirect_url } = await res.json;
 
-      if (res.ok) return window.location.replace(redirect_url);
+      if (!res.ok) alert("Something went wrong!");
 
-      alert("Something went wrong!");
       window.location.replace(redirect_url);
     } catch (err) {
       alert(err.message);
@@ -56,7 +55,7 @@ export default class extends Controller {
         +this.containerTarget.dataset.days + 1
       }天</h4>
       <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-      <div data-controller="sorting" class="h-full w-full" id="plan-day-${
+      <div data-controller="sorting" class="h-full w-full sites-list" id="plan-day-${
         +this.containerTarget.dataset.days + 1
       }">
         <div></div>
@@ -65,5 +64,16 @@ export default class extends Controller {
 
     this.containerTarget.dataset.days = +this.containerTarget.dataset.days + 1;
     this.containerTarget.insertAdjacentHTML("beforeend", dayElement);
+  }
+
+  removeDay() {
+    const sitesInLastDay = this.containerTarget.lastElementChild
+      .querySelector(".sites-list")
+      .querySelectorAll(".site").length;
+
+    if (sitesInLastDay) return alert("移除天數前，請先移除該天所有行程。");
+
+    this.containerTarget.dataset.days = +this.containerTarget.dataset.days - 1;
+    this.containerTarget.lastElementChild.remove();
   }
 }

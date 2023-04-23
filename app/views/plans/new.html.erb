@@ -17,13 +17,14 @@
           <%= form.number_field :days, class: "days w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50, min: 1, placeholder: 1%>
         </div>
         <div class="text-blue-600 cursor-pointer inline-block" data-action="click->edit#addDay">增加天數</div>
+        <div class="text-rose-600 cursor-pointer inline-block" data-action="click->edit#removeDay">移除天數</div>
         <% if @plan.locations != nil %>
-          <div class="flex bg-white rounded-lg shadow-xl p-8 gap-5 flex-wrap mt-10" id="plan" data-edit-target="container" data-days="<%= @plan.days %>">
+          <div class="flex bg-white rounded-lg shadow-xl p-8 gap-3 flex-wrap mt-10" id="plan" data-edit-target="container" data-days="<%= @plan.days %>">
             <% @plan.locations.each_key.with_index do |key, i| %>
               <div class="relative px-4 day">
                 <h4 class="text-xl text-gray-900 font-bold">第<%= i + 1 %>天</h4>
                 <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-                <div data-controller="sorting" class="h-full w-full" id="plan-day-<%= i + 1 %>" >
+                <div data-controller="sorting" class="h-full w-full sites-list" id="plan-day-<%= i + 1 %>" >
                   <%# this div is here to prevent weird animation problem %>
                   <div></div>
                   <% @plan.locations[key].each.with_index do | site, j | %>
