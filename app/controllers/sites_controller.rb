@@ -14,7 +14,7 @@ class SitesController < ApplicationController
     end
   
      @sites.map{ |site|
-     if site.image.nil?
+     if site.image.nil? || site.image.empty?
       site.image = "https://fakeimg.pl/400x200/?text=Hello"
       end
     }
@@ -34,7 +34,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    if @site.image.nil?
+    if @site.image.nil? || site.image.empty?
       @site.image = "https://fakeimg.pl/400x200/?text=Hello"
     end
   end
