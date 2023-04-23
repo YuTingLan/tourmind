@@ -13,6 +13,9 @@ export default class extends Controller {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
+          customClass: {
+            container: 'flash_style'
+          },
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
