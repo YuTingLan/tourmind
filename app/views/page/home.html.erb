@@ -15,6 +15,9 @@
                     <%=link_to image_tag(current_user.avatar_url, class: "rounded-full w-10 h-10 mr-2"), edit_user_registration_path%>
                 <% end %>
                 
+                <%= link_to "升級會員", pricing_path,
+                                        class: "btn-round btn-sm btn-gray"  %>
+                                        
                 <%= button_to "登出", destroy_user_session_path, method: "delete", class: "btn-round btn-sm btn-gray mr-2" %>
             </div>
         </section>
@@ -28,6 +31,8 @@
                 <% end %>
             </div>
             <div>
+                <%= link_to "升級會員", pricing_path,
+                                        class: "btn-round btn-sm btn-gray"  %>
                 <%= link_to "會員登入" , new_user_session_path, 
                                         class: "btn-round btn-sm btn-black" %>
                 <%= link_to "註冊", new_user_registration_path, 
