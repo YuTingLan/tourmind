@@ -1,0 +1,39 @@
+<div class="flex flex-col -mt-12">
+  <div>
+    <%= link_to "所有行程", plans_path, class: "text-blue-600 mx -3"%>
+    <%= link_to "編輯行程", edit_plan_path(@plan), class: "text-blue-600"%>
+  </div>
+  <h1 class="mx-auto my-10"><%= @plan.name %></h1>
+  <p class="mx-20 my-3"><%= @plan.description %></p>
+  <p class="mx-20 my-3">天數： <%= @plan.days %></p>
+  <p class="mx-20 my-3">分類： <%= @plan.category %></p>
+  <% if @plan.locations != nil %>
+    <div class="flex bg-white rounded-lg shadow-xl mt-4 p-8 gap-3 flex-wrap mx-12">
+      <% @plan.locations.each_key.with_index do |key, i| %>
+        <div class="relative px-4">
+          <h4 class="text-xl text-gray-900 font-bold">第<%= i + 1 %>天</h4>
+          <div
+          class="absolute h-full border border-dashed border-opacity-20 border-secondary"
+        ></div>
+          <% @plan.locations[key].each do |site| %>
+            <!-- start::Timeline item -->
+            <div class="flex items-center w-full my-6 -ml-1.5">
+              <div class="w-1/12 z-10">
+                <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+              </div>
+              <div class="w-11/12 ml-2">
+                <p class="text-sm">
+                  <%= site["type"] %>
+                  <a href="#" class="text-blue-600 font-bold"><%= site["name"] %></a>
+                </p>
+                <p class="text-xs text-gray-500">停留時間：<%= site["stay_time"] %> mins</p>
+              </div>
+            </div>
+            <!-- end::Timeline item -->
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to "刪除行程", plan_path(@plan.id), method: "delete", class: "my-10 block uppercase mx-auto shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" %>
+</div>

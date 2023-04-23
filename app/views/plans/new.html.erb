@@ -1,0 +1,55 @@
+<div class="w-full" id="top" data-id="<%= @plan.id %>">
+  <%= link_to "所有行程", plans_path, class: "text-blue-600"%>
+  <!-- component -->
+  <div class="flex flex-col items-center justify-center p-12 mx-auto" data-controller="request">
+    <div class="w-full">
+      <%= form_with model: @plan, data: {controller: "edit"} do |form| %>
+        <div class="mb-5">
+          <%= form.label :name, "行程名稱", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.text_field :name, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", data: {edit_target: "name"}%>
+        </div>
+        <div class="mb-5">
+          <%= form.label :description, "行程簡介", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.text_area :description, data: {edit_target: "description"}, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50%>
+        </div>
+        <div class="mb-5">
+          <%= form.label :days, "行程天數", class: "mb-3 block text-base font-medium text-blue-600" %>
+          <%= form.number_field :days, class: "days w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md", rows: 5, cols: 50, min: 1, placeholder: 1%>
+        </div>
+        <div class="text-blue-600 cursor-pointer inline-block" data-action="click->edit#addDay">增加天數</div>
+        <div class="text-rose-600 cursor-pointer inline-block" data-action="click->edit#removeDay">移除天數</div>
+        <% if @plan.locations != nil %>
+          <div class="flex bg-white rounded-lg shadow-xl p-8 gap-3 flex-wrap mt-10" id="plan" data-edit-target="container" data-days="<%= @plan.days %>">
+            <% @plan.locations.each_key.with_index do |key, i| %>
+              <div class="relative px-4 day">
+                <h4 class="text-xl text-gray-900 font-bold">第<%= i + 1 %>天</h4>
+                <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+                <div data-controller="sorting" class="h-full w-full sites-list" id="plan-day-<%= i + 1 %>" >
+                  <%# this div is here to prevent weird animation problem %>
+                  <div></div>
+                  <% @plan.locations[key].each.with_index do | site, j | %>
+                    <!-- start::Timeline item -->
+                    <div class="site flex items-center w-full my-6 -ml-1.5 bg-white" id="day<%= i + 1 %>-<%= j + 1 %>">
+                      <div class="w-1/12 z-10">
+                        <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                      </div>
+                      <div class="w-11/12 ml-2">
+                        <p class="text-sm">
+                          <span><%= site["type"] %></span>
+                          <a href="#" class="text-blue-600 font-bold"><%= site["name"] %></a>
+                        </p>
+                        <p class="text-xs text-gray-500">停留時間：<%= site["stay_time"] %> mins</p>
+                      </div>
+                    </div>
+                    <!-- end::Timeline item -->
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <button data-action="click->edit#update" class="inline-block mx-auto my-10 shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">更新行程</button>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="w-full">
+  <%= link_to "新增行程", new_plan_path, class: "text-blue-600"%>
+  <h1 class="mx-auto text-center mb-8 text-lg">行程總覽</h1>
+  <div class="flex gap-3 flex-wrap">
+    <% @plans.each do |plan| %>
+      <div class="max-w-xs overflow-hidden rounded-xl bg-white shadow-md duration-200 hover:scale-105 hover:shadow-xl">
+        <img src="https://i.imgur.com/5dmBrx6.jpg" alt="plant" class="h-auto w-full" />
+        <div class="p-5">
+          <p class="text-medium mb-5 text-gray-700"><%= plan.name %></p>
+          <%= link_to plan_path(plan.id) do %>
+            <button class="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">詳細資訊</button>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

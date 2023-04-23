@@ -23,7 +23,6 @@ default: &default
   username: tourmind
   password: <%= ENV['TOURMIND_DATABASE_PASSWORD'] %>
 
-
 development:
   <<: *default
   database: tourmind_development
