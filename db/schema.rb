@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_21_054819) do
+ActiveRecord::Schema.define(version: 2023_04_23_043707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "author"
+    t.float "rating"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.json "images"
+  end
 
   create_table "hotels", force: :cascade do |t|
     t.string "name"
@@ -64,6 +76,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_054819) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "site_types", default: [], array: true
     t.string "tel"
+    t.string "image"
+    t.string "parking"
   end
 
   create_table "users", force: :cascade do |t|
