@@ -23,8 +23,15 @@
             <div class="p-5">
             <%= image_tag "diamond-white", class: "m-auto" %>
             <h2 class="mt-2 mb-5 font-semibold text-center text-gray-700 text-medium ">白鑽會員</h2>
-            <p class="mb-5 text-xl font-medium text-center text-gray-700 text-medium">$50 <span class="text-xs">/year</span></p>
-            <button class="w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md">Buy Now</button>
+            <p class="mb-5 text-xl font-medium text-center text-gray-700 text-medium">$50<span class="text-xs">/year</span></p>
+            <% mpg = Newebpay::Mpg.new(50).form_info %>
+            <%= form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", html: { method: :post } do |form| %>
+                <%= form.hidden_field :MerchantID, value: mpg[:MerchantID]%>
+                <%= form.hidden_field :TradeInfo, value: mpg[:TradeInfo]%>
+                <%= form.hidden_field :TradeSha, value: mpg[:TradeSha]%>
+                <%= form.hidden_field :Version, value: mpg[:Version]%>
+                <%= form.submit "Buy Now", class: "w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md" %>
+            <% end %>
             <hr class="mx-auto my-4 border-t-2 border-gray-300">
             <ul>
                 <li class="">收藏 3 個行程規劃</li>
@@ -36,7 +43,14 @@
             <%= image_tag "diamond-blue", class: "m-auto" %>
             <h2 class="mt-2 mb-5 font-semibold text-center text-gray-700 text-medium ">藍鑽會員</h2>
             <p class="mb-5 text-xl font-medium text-center text-gray-700 text-medium">$100 <span class="text-xs">/year</span></p>
-            <button class="w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md">Buy Now</button>
+            <% mpg = Newebpay::Mpg.new(100).form_info %>
+            <%= form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", html: { method: :post } do |form| %>
+                <%= form.hidden_field :MerchantID, value: mpg[:MerchantID]%>
+                <%= form.hidden_field :TradeInfo, value: mpg[:TradeInfo]%>
+                <%= form.hidden_field :TradeSha, value: mpg[:TradeSha]%>
+                <%= form.hidden_field :Version, value: mpg[:Version]%>
+                <%= form.submit "Buy Now", class: "w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md" %>
+            <% end %>
             <hr class="mx-auto my-4 border-t-2 border-gray-300">
             <ul>
                 <li>收藏 5 個行程規劃</li>
@@ -48,7 +62,14 @@
             <%= image_tag "diamond-red", class: "m-auto" %>
             <h2 class="mt-2 mb-5 font-semibold text-center text-gray-700 text-medium ">紅鑽會員</h2>
             <p class="mb-5 text-xl font-medium text-center text-gray-700 text-medium">$200 <span class="text-xs">/year</span></p>
-            <button class="w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md">Buy Now</button>
+            <% mpg = Newebpay::Mpg.new(200).form_info %>
+            <%= form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", html: { method: :post } do |form| %>
+                <%= form.hidden_field :MerchantID, value: mpg[:MerchantID]%>
+                <%= form.hidden_field :TradeInfo, value: mpg[:TradeInfo]%>
+                <%= form.hidden_field :TradeSha, value: mpg[:TradeSha]%>
+                <%= form.hidden_field :Version, value: mpg[:Version]%>
+                <%= form.submit "Buy Now", class: "w-full py-2 text-indigo-100 duration-75 bg-indigo-600 rounded-md hover:bg-indigo-500 hover:shadow-md" %>
+            <% end %>
             <hr class="mx-auto my-4 border-t-2 border-gray-300">
             <ul>
                 <li>無限制收藏數量</li>

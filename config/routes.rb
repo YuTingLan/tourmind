@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   #金流路徑
   #首頁-升級會員
   get '/pricing', to: 'page#pricing'
+  post '/pricing/return', to: 'page#return'
+  post '/pricing/notify', to: 'page#notify'
+
+  
 end
