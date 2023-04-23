@@ -2,62 +2,62 @@
   <%= render 'shared/error_message' , record: site %>
     <div class='my-5'>
       <%= form.label :name ,'景點名稱' %>
-        <%= form.text_field :name, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
-            mt-2 w-full' %>
+        <%= form.text_field :name, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :website, '網站' %>
-        <%= form.text_field :website, class:'block shadow rounded-md border border-gray-200 outline-none px-3
-            py-2 mt-2 w-full' %>
+        <%= form.text_field :website, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :tel , '電話' %>
-        <%= form.text_field :tel, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
-            mt-2 w-full' %>
+        <%= form.text_field :tel, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :stay_duration, '停留時間' %>
-        <%= form.text_field :stay_duration, class:'block shadow rounded-md border border-gray-200 outline-none
-            px-3 py-2 mt-2 w-full' %>
+        <%= form.text_field :stay_duration, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
+          mt-2 w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :address, '地址' %>
-        <%= form.text_area :address, class:'block shadow rounded-md border border-gray-200 outline-none px-3
-            py-2 mt-2 w-full' %>
+        <%= form.text_area :address, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :latitude, '緯度' %>
-        <%= form.text_field :latitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3
-            py-2 mt-2 w-full' %>
+        <%= form.text_field :latitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :longitude, '經度' %>
-        <%= form.text_field :longitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3
-            py-2 mt-2 w-full' %>
+        <%= form.text_field :longitude, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
+          mt-2 w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :intro, '簡介' %>
-        <%= form.text_area :intro, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
-            mt-2 w-full' %>
+        <%= form.text_area :intro, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :image , '照片' %>
-        <%= form.file_field :image, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
-            mt-2 w-full' %>
+        <%= form.text_field :image, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+          w-full' %>
     </div>
 
     <div class='my-5'>
       <%= form.label :pet_freindly, '攜帶寵物' %>
-        <%= form.text_field :pet_freindly, class:'block shadow rounded-md border border-gray-200 outline-none
-            px-3 py-2 mt-2 w-full' %>
+        <%= form.text_field :pet_freindly, class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2
+          mt-2 w-full' %>
     </div>
 
     <div class='my-5'>
@@ -67,16 +67,16 @@
             <% site_types.each do |site_type| %>
               <label class='inline-flex items-center mr-4'>
                 <%= check_box_tag 'site[site_types][]' , site_type,@site.site_types.include?(site_type),
-                                  class: 'form-checkbox h-5 w-5 text-gray-600'%>
+                  class: 'form-checkbox h-5 w-5 text-gray-600' %>
                   <%= site_type %>
               </label>
-                <% end %>
+              <% end %>
           </div>
     </div>
 
 
     <div class='inline'>
-      <%= form.submit '提交' , class:'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium
-          cursor-pointer' %>
+      <%= form.submit '提交' , class:'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer'
+        %>
     </div>
-<% end %>
+    <% end %>

@@ -4,11 +4,20 @@ class SitesController < ApplicationController
   before_action :set_site, only: %i[show edit update destroy]
 
   def index
-    @sites = Site.order(updated_at: :desc)
-    @sites = Site.search(params[:keyword]) if params[:keyword].present?
-    return unless @sites.empty?
-
-    flash.now[:notice] = '沒有找到符合條件的飯店'
+     if params[:keyword].present?
+        @sites = Site.search(params[:keyword]).order(updated_at: :desc)
+     else
+        @sites = Site.order(updated_at: :desc)
+     end
+    if  @sites.empty?
+        flash.now[:notice] = '沒有找到符合條件的景點' and return
+    end
+  
+     @sites.map{ |site|
+     if site.image.nil?
+      site.image = "https://fakeimg.pl/400x200/?text=Hello"
+      end
+    }
   end
 
   def new
@@ -24,9 +33,14 @@ class SitesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    if @site.image.nil?
+      @site.image = "https://fakeimg.pl/400x200/?text=Hello"
+    end
+  end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @site.update(site_parames)
@@ -49,7 +63,6 @@ class SitesController < ApplicationController
   end
 
   def site_parames
-    params.require(:site).permit(:name, :website, :address, :tel, :latitude, :longitude, :stay_duration, :intro,
-                                 :pet_freindly, site_types: [])
+    params.require(:site).permit(:name, :website, :address, :image, :parking, :tel, :latitude, :longitude, :stay_duration, :intro, :pet_freindly, site_types: [])
   end
 end
