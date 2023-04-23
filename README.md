@@ -5,38 +5,20 @@ application up and running.
 
 Things you may want to cover:
 
-- 啟動程式需先執行
+* Ruby version
 
-  - bundle install
-  - yarn install
+* System dependencies
 
-- version
+* Configuration
 
-  - rails 6.1.7.3
-  - ruby 3.2.0
-  - node v16.19.0
-  - postgres (PostgreSQL) 14.7 (Homebrew)
+* Database creation
 
-- master.key
+* Database initialization
 
-  - 編輯 vim
+* How to run the test suite
 
-    - $EDITOR=vim rails credentials:edit
+* Services (job queues, cache servers, search engines, etc.)
 
-      - 設定 master.key
+* Deployment instructions
 
-        - Google
-          google_oauth_client_id:`your_id`
-          google_oauth_client_secret:`your_key`
-
-        - LINE
-          line_client_id:`your_id`
-          line_client_secret:`your_key`
-
-        - Facebook
-          facebook_client_id:`your_id`
-          facebook_client_secret:`your_key`
-          ＊測試需要使用 ngrok 服務
-
-  - 查 Value
-    - $Rails.application.credentials.dig(`:your_key`)
+* ...

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
 
@@ -9,6 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   # GET /restaurants/1 or /restaurants/1.json
+
   def show
     # @google_api_key = Rails.application.credentials.GOOGLE_API_KEY
   end
