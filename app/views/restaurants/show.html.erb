@@ -1,62 +1,29 @@
-<div class="mx-auto md:w-2/3 w-full flex bg-slate-200">
+<div class="mx-auto w-full bg-slate-200">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
     <Section class = "p-3">
-      <h1 class="font-bold text-4xl"><%=@restaurant.name%></h1>
-      <div class="flex">
-        <span class="mr-2">OOOOO(評分)</span>
-        <span class="mr-2">XX則評論(comment)</span>
-        <span class="mr-2">$<%=@restaurant.price.to_i%></span>
-        <span class="mr-2"><%=@restaurant.cuisine_types%></span>
-      </div>
+      <%= render "heading", restaurant:@restaurant%>
     </Section>
 
-    <section>
-      <img class="w-full" src=<%=@restaurant.image%> alt="restaurant iamge">
+    <section class = "justify-center flex px-4 grid grid-cols-3 gap-4">
+      <div class = "col-span-2 aspect-[5/3]">
+        <img class="w-full h-full" src=<%=@restaurant.image%> alt="restaurant iamge">
+      </div>
+      <%= render "location", restaurant:@restaurant%>
     </section>
 
-    <section class="min-w-full grid grid-cols-3 gap-4 flex my-5">
-      <div class="border p-4 bg-white">
-        <h2 class="font-bold text-2xl py-3">評等和評論</h2>
-        <hr class="h-px my-8 bg-gray-200">
-        <h3 class="text-lg ">評等</h3>
-        <div class="flex justify-between">
-          <h4 class="text-base ">食物</h4>
-          <span>OOOOO</span>
-        </div>
-        <div class="flex justify-between">
-          <h4 class="text-base ">服務</h4>
-          <span>OOOOO</span>
-        </div>
-        <div class="flex justify-between">
-          <h4 class="text-base ">實務</h4>
-          <span>OOOOO</span>
-        </div>
-        <div class="flex justify-between">
-          <h4 class="text-base ">氣氛</h4>
-          <span>OOOOO</span>
-        </div>
+    <section class="min-w-full grid grid-cols-3 gap-4 flex my-5 px-4">
+      
+      <div class="border p-4 bg-white col-span-2">
+        <%= render "description", restaurant:@restaurant%>
+      </div>
 
-      </div>
-      <div class="border p-4 bg-white">
-        <h2 class="font-bold text-2xl py-3">詳細資料</h2>
-        <h3 class="text-lg ">價位</h3>
-        <p><%=@restaurant.price%></p>
-        <h3 class="text-lg mt-3">菜系</h3>
-        <p><%=@restaurant.cuisine_types%></p>
-      </div>
-      <div class="border p-4 bg-white">
-        <h2 class="font-bold text-2xl py-3">位置和聯絡方式</h2>
-        <h3 class="text-lg ">地址</h3>
-        <p><%=@restaurant.address%></p>
-        <h3 class="text-lg mt-3">網站</h3>
-        <p><%=@restaurant.website%></p>
-        <h3 class="text-lg mt-3">電話</h3>
-        <p><%=@restaurant.tel%></p>
-        
+      <div class="border p-4 bg-white col-span-1">
+        <div>
+          <%= render "reviews"%>
       </div>
     </section>
 

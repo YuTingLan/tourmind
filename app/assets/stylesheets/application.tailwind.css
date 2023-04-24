@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.input-field {
+  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full
+}
+
+.input-checkbox {
+  @apply inline-block block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2
+}
+
 .field_with_errors input{
   @apply rounded-lg w-full border-4 border-red-600
 }

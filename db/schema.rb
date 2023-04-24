@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_230_416_142_249) do
+ActiveRecord::Schema.define(version: 20_230_418_182_125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20_230_416_142_249) do
     t.string 'email'
     t.string 'tel'
     t.string 'website'
-    t.integer 'types'
-    t.text 'cuisine_types'
+    t.integer 'restaurant_type'
+    t.string 'cuisine_types', default: [], array: true
     t.float 'price'
-    t.text 'atmostphere'
+    t.string 'atmostphere', default: [], array: true
     t.string 'michelin_star'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false

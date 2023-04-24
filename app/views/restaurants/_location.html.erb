@@ -1,0 +1,15 @@
+<div class="map-container flex flex-wrap bg-white p-4">
+  <h2 class="font-bold text-2xl">位置和聯絡方式</h2>
+  <div class = "w-full h-1/2">
+    <iframe class="w-full h-full my-auto" frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=<%=@google_api_key%>&q=<%=restaurant.name%> <%=restaurant.address.gsub(',', '')%>"
+            allowfullscreen>
+    </iframe>
+  </div>
+  <div class="w-full pt-4">
+    <h3 class="text-lg ">地址</h3>
+    <p><%=restaurant.address.gsub(',', '')%></p>
+    <h3 class="text-lg mt-3">電話</h3>
+    <p><%=restaurant.tel%></p>     
+  </div>
+</div>

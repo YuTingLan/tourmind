@@ -1,8 +1,11 @@
-<div id="<%= dom_id restaurant %>">
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+  <div class=" rounded overflow-hidden shadow-lg relative">
     <div>
+      <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-1 px-3 bg-gray-200 inline-block font-medium ms-auto absolute top-1 start-1", data: {confirm: "Are you sure?"}%>
+    </div>
+    <div class="aspect-[5/3]">
       <%= link_to restaurant do %>
-        <img class="w-full" src=<%=restaurant.image%> alt="restaurant iamge">
+        <img class="h-full w-full" src=<%=restaurant.image%> alt="restaurant iamge">
       <% end %>
     </div>
     <div class="px-6 py-4">
@@ -12,13 +15,11 @@
     </div>
     <div class="px-6 pt-4 pb-2 flex justify-between">
       <div>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=restaurant.cuisine_types%></span>
+        <% restaurant.cuisine_types.each do |cuisine_type| %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "><%=cuisine_type%></span>
+        <% end %>
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">平均價位: <%=restaurant.price.to_i%></span>
-      </div>
-      <div>
-        <%= link_to 'X', restaurant_path(restaurant), method: :delete, class: "rounded-lg py-2 px-5 bg-gray-200 inline-block font-medium ms-auto", data: {confirm: "Are you sure?"}%>
       </div>
     </div>
   </div>
 
-</div>

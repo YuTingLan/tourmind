@@ -5,11 +5,13 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order(updated_at: :desc)
   end
 
   # GET /restaurants/1 or /restaurants/1.json
-  def show; end
+  def show
+    @google_api_key = Rails.application.credentials.GOOGLE_API_KEY
+  end
 
   # GET /restaurants/new
   def new
@@ -22,39 +24,29 @@ class RestaurantsController < ApplicationController
   # POST /restaurants or /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully created.' }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    set_default_image_if_not_filled
+    if @restaurant.save
+      get_location
+      redirect_to restaurants_path, notice: 'Restaurant was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
   def update
-    respond_to do |format|
-      if @restaurant.update(restaurant_params)
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully updated.' }
-        format.json { render :show, status: :ok, location: @restaurant }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    if @restaurant.update(restaurant_params)
+      get_location
+      redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /restaurants/1 or /restaurants/1.json
   def destroy
     @restaurant.destroy
-
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
   end
 
   private
@@ -64,8 +56,20 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
 
+  def set_default_image_if_not_filled
+    @restaurant.image = 'https://fakeimg.pl/300x200' if @restaurant.image.empty?
+  end
+
+  def get_location
+    GeocoderSearchJob.perform_later(@restaurant)
+  end
+
   # Only allow a list of trusted parameters through.
   def restaurant_params
-    params.require(:restaurant).permit(:name, :intro, :address, :lat, :long, :image, :section, :email, :tel, :website, :types, :cuisine_types, :price, :atmostphere, :michelin_star)
+    params.require(:restaurant).permit(:name, :intro, :address, :lat, :long, :image, :section, :email, :tel,
+                                       :website, :restaurant_type, { cuisine_types: [] }, :price, { atmostphere: [] }, :michelin_star).tap do |whitelisted|
+      whitelisted[:cuisine_types].reject!(&:empty?)
+      whitelisted[:atmostphere].reject!(&:empty?)
+    end
   end
 end
