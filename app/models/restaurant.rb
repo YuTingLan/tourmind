@@ -1,6 +1,9 @@
 # frozen_string_literal: true
-
 class Restaurant < ApplicationRecord
+  # 喜愛清單關聯
+  has_many :favorites, as: :favorable, dependent: :destroy
+
+  # 欄位認證
   validates :name, :address, presence: true
 
   CUISINE_OPTIONS = ['中式料理', '日式料理', '亞洲料理', '健康料理', '印度料理', '台灣小吃/台菜', '壽司', '墨西哥料理', '法式料理', '美式料理', '燒肉', '韓式料理',

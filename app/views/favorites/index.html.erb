@@ -1,0 +1,17 @@
+<div class="flex">
+  <h1 class="font-bold text-4xl">喜愛清單</h1>
+  <%= link_to '返回清單', restaurants_path, class: "rounded-lg py-3 px-5 block font-medium mx-3 border" %>
+</div>
+
+<div class="justify-between items-center">
+  <h2 class="font-bold text-3xl">餐廳</h2>
+  <%= render "favorite_restaurants", favorite_restaurants:@favorites.restaurants%>
+</div>
+
+<div class="justify-between items-center">
+  <h2 class="font-bold text-3xl">飯店</h2>
+</div>
+
+<div class="justify-between items-center">
+  <h2 class="font-bold text-3xl">景點</h2>
+</div>
