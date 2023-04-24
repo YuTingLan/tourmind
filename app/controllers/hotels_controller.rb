@@ -5,12 +5,12 @@ class HotelsController < ApplicationController
 
   def index
      if params[:keyword].present?
-        @hotels = Hotel.search(params[:keyword]).order(updated_at: :desc)
+        @hotels = Hotel.where("name LIKE :search OR address LIKE :search", search: "%#{params[:keyword]}%").order(updated_at: :desc)
      else
         @hotels = Hotel.order(updated_at: :desc)
      end
     if  @hotels.empty?
-        flash.now[:notice] = '沒有找到符合條件的飯店' and return
+        flash.now[:alert] = '沒有找到符合條件的飯店' and return
     end
   
     @hotels.map { |hotel|

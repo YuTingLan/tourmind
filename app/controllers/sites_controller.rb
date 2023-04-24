@@ -5,12 +5,12 @@ class SitesController < ApplicationController
 
   def index
      if params[:keyword].present?
-        @sites = Site.search(params[:keyword]).order(updated_at: :desc)
+        @sites = Site.where("name LIKE :search OR address LIKE :search", search: "%#{params[:keyword]}%").order(updated_at: :desc)
      else
         @sites = Site.order(updated_at: :desc)
      end
     if  @sites.empty?
-        flash.now[:notice] = '沒有找到符合條件的景點' and return
+        flash.now[:alert] = '沒有找到符合條件的景點' and return
     end
   
      @sites.map{ |site|
