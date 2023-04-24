@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Restaurant < ApplicationRecord
   # 喜愛清單關聯
   has_many :favorites, as: :favorable, dependent: :destroy

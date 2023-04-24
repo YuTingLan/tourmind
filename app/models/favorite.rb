@@ -3,12 +3,10 @@ class Favorite < ApplicationRecord
   belongs_to :favorable, polymorphic: true
 
   # scope :hotels, -> { where(favorable_type: "Hotel") }
-  scope :restaurants, -> { where(favorable_type: "Restaurant") }
+  scope :restaurants, -> { where(favorable_type: 'Restaurant') }
 
-  validates :user_id, uniqueness: { 
-    scope: [:favorable_id, :favorable_type],
-    message: 'can only favorite an item once'
+  validates :user_id, uniqueness: {
+    scope: %i[favorable_id favorable_type],
+    message: 'can only favorite an item once',
   }
-
 end
-

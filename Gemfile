@@ -48,12 +48,12 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 4.1.0'
+  gem 'letter_opener'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'letter_opener'
   gem 'rubocop-rails', '~> 2.19'
   gem 'spring'
+  gem 'web-console', '>= 4.1.0'
 end
 
 group :test do
@@ -65,5 +65,5 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'hotwire-rails', '~> 0.1.3'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
