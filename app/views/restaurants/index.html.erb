@@ -2,7 +2,9 @@
   <div class="flex justify-between items-center">
     <div class="flex">
       <h1 class="font-bold text-4xl">餐廳</h1>
-      <%= link_to '喜愛清單', favorites_path, class: "rounded-lg py-3 px-5 block font-medium mx-3 border" %>
+      <% if current_user%>
+        <%= link_to '喜愛清單', favorites_path, class: "rounded-lg py-3 px-5 block font-medium mx-3 border" %>
+      <% end %>
     </div>
     <%= link_to '新增餐廳', new_restaurant_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>

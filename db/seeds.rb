@@ -6,3 +6,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Restaurant.create!([{
+  title: "Physics",
+  author: "Pete Docter",
+  description: "A.",
+  read_on: 1.week.ago
+}])
