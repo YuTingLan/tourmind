@@ -4,8 +4,8 @@ module Newebpay
       attr_reader :status, :message, :result, :order_no, :trans_no
   
       def initialize(params)
-        @key = "I48TRGyObxesp2hBIpFk61SSvSVmuSfG"
-        @iv = "CiLxMiktaB6WvwdP"
+        @key = Rails.application.credentials[:newebpay_Key]
+        @iv = Rails.application.credentials[:newebpay_IV]
   
         response = decrypy(params)
         @status = response['Status']
