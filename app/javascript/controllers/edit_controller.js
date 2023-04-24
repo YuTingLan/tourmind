@@ -7,6 +7,8 @@ export default class extends Controller {
 
   async update() {
     try {
+      this.trimDays();
+
       const data = {
         name: this.nameTarget.value,
         description: this.descriptionTarget.value,
@@ -75,5 +77,17 @@ export default class extends Controller {
 
     this.containerTarget.dataset.days = +this.containerTarget.dataset.days - 1;
     this.containerTarget.lastElementChild.remove();
+  }
+
+  trimDays() {
+    const sitesInLastDay = this.containerTarget.lastElementChild
+      .querySelector(".sites-list")
+      .querySelectorAll(".site").length;
+
+    if (sitesInLastDay) return;
+
+    this.containerTarget.dataset.days = +this.containerTarget.dataset.days - 1;
+    this.containerTarget.lastElementChild.remove();
+    return this.trimDays();
   }
 }
