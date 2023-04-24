@@ -15,7 +15,7 @@
     </Section>
 
     <section>
-      <img class="w-full" src=<%=@restaurant.image%> alt="restaurant iamge">
+        <%= image_tag @restaurant.image.url, class: 'mt-2 max-w-full h-auto' if @restaurant.image.url.present? %>
     </section>
 
     <section class="min-w-full grid grid-cols-3 gap-4 flex my-5">
@@ -59,8 +59,9 @@
         
       </div>
     </section>
-
+    <%= link_to "發表評論", comments_path %>
     <%= link_to '編輯餐廳資訊', edit_restaurant_path(@restaurant), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to '返回餐廳列表', restaurants_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
+

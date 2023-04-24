@@ -1,0 +1,30 @@
+<div class="flex ml-10">
+  <div class="bg-gray-100 rounded-lg p-4 mt-4 w-3/5">
+    <p class="mt-2">
+      <strong>評分:</strong>
+      <span class="text-yellow-500"><%= @comment.rating %></span>
+    </p>
+    <p class="mt-2">
+      <strong>標題:</strong>
+      <span class="text-purple-600"><%= @comment.title %></span>
+    </p>
+    <p class="mt-2">
+      <strong>內容:</strong>
+      <span class="text-gray-600"><%= @comment.content %></span>
+    </p>
+    
+    <div class="mt-2 max-w-4xl">
+      <div class="flex w-full gap-2">
+        <% @comment.images.each do |image| %>
+          <div class="w-full max-w-md">
+            <%= image_tag image.url, class: 'max-w-md object-cover object-center w-full h-full' if image.url.present? %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="mt-4">
+      <%= link_to 'Edit', edit_comment_path, class: 'text-blue-500 hover:text-blue-700 mr-2' %>
+      <%= link_to 'Back', comments_path, class: 'text-blue-500 hover:text-blue-700' %>
+    </div>
+  </div>
+</div>
