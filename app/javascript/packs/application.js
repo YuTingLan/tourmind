@@ -4,7 +4,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "controllers"
 import "@hotwired/turbo-rails"
-
+import "scripts"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
