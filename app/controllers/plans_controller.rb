@@ -42,7 +42,16 @@ class PlansController < ApplicationController
   end
 
   def day_info
-    render "_day_nav"
+    @plan = Plan.find(params[:id])
+    @day = params[:day].to_i
+
+    render "day_nav"
+  end
+
+  def plan_overview
+    @plan = Plan.find(params[:id])
+
+    render "_plan_overview"
   end
 
   private
