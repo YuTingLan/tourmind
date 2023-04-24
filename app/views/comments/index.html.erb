@@ -1,44 +1,39 @@
-                    
-<div class="flex flex-wrap gap-4">
+
   <!-- 搜索欄區域 -->
   <div class="flex-shrink-0 w-full md:w-1/2 p-4">
     <form class="flex gap-2">
       <input type="text" name="keyword" value="<%= params[:keyword] %>" placeholder="請輸入關鍵字..." class="w-full p-2 border border-gray-300 rounded-lg">      
       <input type="submit" class="btn btn-primary py- px-2" value="查詢">
-    </form>
+    </form>  
   </div>
-
+<div class="flex flex-wrap ">
   <!-- 卡片區域 -->
   <div class="flex flex-wrap w-full md:w-2/3  gap-4 p-4">
+
     <%= link_to '發表評論', new_comment_path %>
     <% @comments.each do |comment| %>
     <div class="flex-shrink-0 w-full  p-4 ">
       <div class="p-4 border border-gray-500 rounded-lg">
-      <%= comment.author %>
-      <div>
-      <%=  comment.title %>
-      </div>
-      <div>
-      <%=  comment.rating %>
-      </div>
-      <div>
-      <%=  comment.content %>
-      </div>
-      <div class="flex ml-4 gap-2">
-        <% if comment.images.present? %>
-        <% comment.images.each do |image| %>
-        <div class="w-24 h-24 ">
+        <%= comment.author %>
+        <%= comment.title %>
+        <%= comment.rating %>
+        <%= comment.content %>
+        <div class="flex ml-4 gap-2">
+          <% if comment.images.present? %>
+          <% comment.images.each do |image| %>
+          <div class="w-24 h-24 ">
           <%= image_tag image.url, class: "w-full h-full object-cover" %>
-        </div>
-        <% end %>
-        <% else %>
+          </div>
+          <% end %>
+          <% else %>
           <!-- 顯示預設圖片或其他提示 -->
-        <% end %>
+          <% end %>         
+        </div> 
       </div>
-      <div>
-        <%= link_to '編輯', edit_comment_path(comment) %>
-        <%= link_to '刪除', comment_path(comment), method: "delete", data: { confirm: 'Are you sure?' } %>
-      </div>
+    </div>
+    <div>
+      <%= link_to '編輯', edit_comment_path(comment) %>
+      <%= link_to '刪除', comment_path(comment), method: "delete", data: { confirm: 'Are you sure?' } %>
     </div>
     <% end %>
   </div>
