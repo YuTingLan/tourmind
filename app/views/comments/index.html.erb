@@ -6,18 +6,34 @@
       <input type="submit" class="btn btn-primary py- px-2" value="查詢">
     </form>  
   </div>
-<div class="flex flex-wrap ">
-  <!-- 卡片區域 -->
-  <div class="flex flex-wrap w-full md:w-2/3  gap-4 p-4">
 
+<div class="flex flex-wrap ">
+  <div class="flex flex-wrap w-full md:w-2/3  gap-4 p-4">
     <%= link_to '發表評論', new_comment_path %>
     <% @comments.each do |comment| %>
     <div class="flex-shrink-0 w-full  p-4 ">
       <div class="p-4 border border-gray-500 rounded-lg">
+        <div>
         <%= comment.author %>
+        </div>
+        <div>
         <%= comment.title %>
-        <%= comment.rating %>
+        </div>
+        <div class="rating">
+        <% if comment.rating %>
+          <% rating = comment.rating %>
+        <% 5.times do |i| %>
+        <% if i < rating %>
+          <i class="fas fa-star"></i>
+          <% else %>
+        <i class="far fa-star"></i>
+        <% end %>
+        <% end %>
+    <% end %>
+        </div>
+        <div>
         <%= comment.content %>
+        </div>
         <div class="flex ml-4 gap-2">
           <% if comment.images.present? %>
           <% comment.images.each do |image| %>

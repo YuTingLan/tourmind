@@ -5,10 +5,13 @@
       <div class="w-full p-8 bg-white rounded-lg shadow-md">
         <div class="mb-4">
           <%= form.label :評分, class: "block mb-2 text-gray-700" %>
-          <% 5.times do |i| %>
-          <%= form.radio_button :rating, i, class: "mr-1" %>
-          <%= form.label "rating_#{i}", "", class: "sr-only" %>
-          <% end %>
+          <div class="rating">
+            <input type="radio" name="comment[rating]" class="mask mask-star" value="1"/>
+            <input type="radio" name="comment[rating]" class="mask mask-star" value="2"/>
+            <input type="radio" name="comment[rating]" class="mask mask-star" value="3"/>
+            <input type="radio" name="comment[rating]" class="mask mask-star" value="4"/>
+            <input type="radio" name="comment[rating]" class="mask mask-star" value="5"/>
+          </div>
         </div>
         
         <div class="mb-4">
