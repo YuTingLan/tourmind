@@ -96,5 +96,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #localhost 轉址到伺服器 （測試用）
-  config.hosts << "874b-2001-b400-e28d-276c-e1da-831c-b0a9-d896.ngrok-free.app"
+  config.hosts << "f5af-61-220-182-115.ngrok-free.app"
 end

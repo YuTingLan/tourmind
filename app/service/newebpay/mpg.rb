@@ -3,8 +3,8 @@ module Newebpay
       attr_accessor :info
   
       def initialize(params)
-        @key = Rails.application.credentials[:newebpay_Key]
-        @iv = Rails.application.credentials[:newebpay_VI]
+        @key = Rails.application.credentials[:newebpay_key]
+        @iv = Rails.application.credentials[:newebpay_iv]
         @merchant_id = "MS348692298"
         @info = {}  # 使用 attr_accessor 讓 info 方便存取
         set_info(params)
@@ -15,7 +15,7 @@ module Newebpay
           MerchantID: @merchant_id,
           TradeInfo: trade_info, #AES加密產品資訊
           TradeSha: trade_sha, #SHA加密產品資訊
-          Version: "2.0"
+          Version: "2.0",
         }
       end
   

@@ -1,24 +1,30 @@
 module Newebpay
     class MpgResponse
       # 使用 attr_reader 可以更方便取用這些資訊
-      attr_reader :status, :message, :result, :order_no, :trans_no
+      attr_reader :status, :message, :result, :order_no, :trans_no, :amount, :pay_time
   
       def initialize(params)
-        @key = Rails.application.credentials[:newebpay_Key]
-        @iv = Rails.application.credentials[:newebpay_IV]
-  
+        @key = Rails.application.credentials[:newebpay_key]
+        @iv = Rails.application.credentials[:newebpay_iv]
         response = decrypy(params)
-        @status = response['Status']
+        @status = response['Status'] #回傳狀態
         @message = response['Message']
+        
         @result = response['Result']
-        @order_no = @result["MerchantOrderNo"]
-        @trans_no = @result["TradeNo"]
+        @order_no = @result["MerchantOrderNo"] #商店訂單編號
+        @trans_no = @result["TradeNo"] #藍新交易序號
+        @amount = @result["Amt"] #付款金額
+        @pay_time = @result["PayTime"] #付款時間
       end
   
       def success?
         status === 'SUCCESS'
       end
   
+      def mpg_result
+        result
+      end
+
       private
         # AES 解密
         def decrypy(encrypted_data)
