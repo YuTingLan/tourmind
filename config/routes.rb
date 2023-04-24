@@ -12,11 +12,10 @@ Rails.application.routes.draw do
   resources :restaurants
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  #金流路徑
-  #首頁-升級會員
+  # 金流路徑
+  # 首頁-升級會員
   get '/pricing', to: 'page#pricing'
   get '/pricing/paymentok', to: 'page#paymentok'
   post '/pricing/return', to: 'page#return'
   post '/pricing/notify', to: 'page#notify'
-
 end

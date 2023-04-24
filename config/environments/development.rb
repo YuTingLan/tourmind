@@ -95,6 +95,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  #localhost 轉址到伺服器 （測試用）
-  config.hosts << "f5af-61-220-182-115.ngrok-free.app"
+  # Eva_localhost 轉址到伺服器 （測試用）
+  #config.hosts << 'f5af-61-220-182-115.ngrok-free.app'
 end

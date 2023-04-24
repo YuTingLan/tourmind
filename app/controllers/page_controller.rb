@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class PageController < ApplicationController
-
   before_action :authenticate_user!, only: [:pricing]
-  skip_before_action :verify_authenticity_token, only: [:return, :notify] 
+  skip_before_action :verify_authenticity_token, only: %i[return notify]
 
   def home; end
-  
+
   def pricing; end
 
   def notify
@@ -15,14 +14,14 @@ class PageController < ApplicationController
 
   def return
     response = Newebpay::MpgResponse.new(params[:TradeInfo])
-    if response.success?
-      payment = Payment.new
-      payment.amount = response.mpg_result['Amt']
-      payment.pay_time = response.mpg_result['PayTime']
-      payment.status = "付款成功"
-      payment.save
-      redirect_to pricing_paymentok_path
-    end
+    return unless response.success?
+
+    payment = Payment.new
+    payment.amount = response.mpg_result['Amt']
+    payment.pay_time = response.mpg_result['PayTime']
+    payment.status = '付款成功'
+    payment.save
+    redirect_to pricing_paymentok_path
   end
 
   def paymentok
