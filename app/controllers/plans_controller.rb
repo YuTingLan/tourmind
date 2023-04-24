@@ -41,6 +41,10 @@ class PlansController < ApplicationController
     return redirect_to plans_path if @plan.destroy
   end
 
+  def day_info
+    render "_day_nav"
+  end
+
   private
 
   def find_plan
