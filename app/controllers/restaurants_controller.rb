@@ -71,4 +71,5 @@ class RestaurantsController < ApplicationController
       whitelisted[:cuisine_types].reject!(&:empty?)
       whitelisted[:atmostphere].reject!(&:empty?)
     end
+  end
 end
